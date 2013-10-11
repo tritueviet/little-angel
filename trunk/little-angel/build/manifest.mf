@@ -1,3 +1,4 @@
+MIDlet-1: Main, , Control.Main
 MIDlet-Vendor: Vendor
 MIDlet-Name: LittleAngel
 MIDlet-Version: 1.0

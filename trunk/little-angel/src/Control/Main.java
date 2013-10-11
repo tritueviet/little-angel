@@ -15,11 +15,12 @@ public class Main extends MIDlet {
 
     public Main() {
         Display.init(this);
+        
     }
 
     
     public void startApp() {
-//        Controller.getInstance().chay(this);
+        Controller.getInstance().chay(this);
     }
     
     public void pauseApp() {
