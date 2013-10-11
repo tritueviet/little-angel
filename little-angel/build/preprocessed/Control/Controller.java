@@ -7,13 +7,16 @@ package Control;
 import com.nokia.mid.ui.CategoryBar;
 import com.nokia.mid.ui.ElementListener;
 import com.nokia.mid.ui.IconCommand;
+import com.sun.lwuit.Display;
 import com.sun.lwuit.plaf.UIManager;
 import com.sun.lwuit.util.Resources;
 import event.Event;
 import javax.microedition.lcdui.Command;
 import javax.microedition.lcdui.Image;
 import views.LoadScreen;
+import views.ViewChoice;
 import views.ViewHome;
+import views.ViewHotLine;
 
 /**
  *
@@ -93,7 +96,19 @@ public class Controller {
     
     public void showHome(){
         ViewHome viewHome= new ViewHome();
+        //javax.microedition.lcdui.Display.getDisplay(main).setCurrent(viewHome);
         viewHome.show();
+    
+    }
+    public void showHotLine(){
+        ViewHotLine viewhot = new ViewHotLine();
+        viewhot.show();
+    
+    }
+    public void showChoice(int i){
+        ViewChoice viewchoice= new ViewChoice(i);
+        //javax.microedition.lcdui.Display.getDisplay(main).setCurrent(viewHome);
+        viewchoice.show();
     
     }
     
@@ -103,25 +118,25 @@ public class Controller {
         //   saveConfig();
         main.destroyApp(true);
     }
-    public static void loadTheme() {
-        try {
-            if (theme == null) {
-                theme = Resources.open("/full_touch_theme.res");
-            }
-            UIManager.getInstance().setThemeProps(theme.getTheme(theme.getThemeResourceNames()[0]));
-        } catch (Throwable ex) {
-        }
-    }
+//    public static void loadTheme() {
+//        try {
+//            if (theme == null) {
+//                theme = Resources.open("/themes/full_touch_theme.res");
+//            }
+//            UIManager.getInstance().setThemeProps(theme.getTheme(theme.getThemeResourceNames()[0]));
+//        } catch (Throwable ex) {
+//        }
+//    }
     class CategoryElementListener implements ElementListener {
 
         public void notifyElementSelected(CategoryBar bar, int selectedIndex) {
             if (bar == categoryBar) {
                 if (selectedIndex == 0) {
-                    // showFindATMView();
+                    showHome();
                 } else if (selectedIndex == 1) {
                     // autoFinder();
                 } else if (selectedIndex == 2) {
-                    // showLocationATM();
+                    showHotLine();
                 } else if (selectedIndex == 3) {
                     // showOptionATM();
                 } else {
