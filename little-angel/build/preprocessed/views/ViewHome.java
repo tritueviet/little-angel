@@ -5,6 +5,7 @@
 package views;
 
 import Control.Controller;
+import Control.Var;
 import com.sun.lwuit.*;
 import com.sun.lwuit.Container;
 import com.sun.lwuit.Form;
@@ -20,14 +21,16 @@ import javax.microedition.lcdui.Graphics;
  *
  * @author TRITUEVIET
  */
-public class ViewHome extends Form implements ActionListener{
+public class ViewHome extends Form implements ActionListener {
 
     public Container table = new Container(new BoxLayout(BoxLayout.Y_AXIS));
     public Container tablename = new Container(new BoxLayout(BoxLayout.Y_AXIS));
     public Button[] bt = new Button[33];
     public Label[] lb = new Label[33];
-
+    Button img1;
     public ViewHome() {
+       
+                
         this.setLayout(new BoxLayout(BoxLayout.X_AXIS));
         Font createSystemFont = Font.createSystemFont(Font.FACE_SYSTEM, Font.STYLE_PLAIN, Font.SIZE_MEDIUM);
         for (int i = 0; i < 24; i++) {
@@ -40,8 +43,8 @@ public class ViewHome extends Form implements ActionListener{
             }
         }
         lb[24] = new Label("0 tuổi ");
-        for(int i = 25;i<33;i++){
-            lb[i] = new Label((33 - i+1) + "tháng ");
+        for (int i = 25; i < 33; i++) {
+            lb[i] = new Label((33 - i + 1) + "tháng ");
         }
         for (int i = 0; i < 33; i++) {
             try {
@@ -53,9 +56,9 @@ public class ViewHome extends Form implements ActionListener{
             lb[i].getStyle().setFont(createSystemFont);
             lb[i].setPreferredSize(new Dimension(70, 20));
             bt[i].setPreferredSize(new Dimension(20, 20));
-            
+
             bt[i].addActionListener(this);
-            
+
             bt[i].getStyle().setBorder(null);
             bt[i].getStyle().setMargin(0, 0, 0, 0);
             bt[i].getPressedStyle().setMargin(0, 0, 0, 0);
@@ -83,7 +86,49 @@ public class ViewHome extends Form implements ActionListener{
         addComponent(table);
         table.getStyle().setMargin(0, 0, 0, 0);
         tablename.getStyle().setMargin(0, 0, 0, 0);
-
+        Container baby = new Container(new BoxLayout(BoxLayout.Y_AXIS));
+        Container b1 = new Container(new BoxLayout(BoxLayout.X_AXIS));
+        try {
+            img1 = new Button(Image.createImage("/images/baby.PNG"));
+            img1.setPreferredSize(new Dimension(39, 32));
+            img1.setUIID("Demobutton");
+            img1.addActionListener(this);
+            img1.getStyle().setMargin(0, 0, 0, 0);
+            img1.getPressedStyle().setMargin(0, 0, 0, 0);
+            img1.getUnselectedStyle().setMargin(0, 0, 0, 0);
+            img1.getSelectedStyle().setMargin(0, 0, 0, 0);
+            img1.getStyle().setPadding(0, 0, 0, 0);
+            img1.getPressedStyle().setPadding(0, 0, 0, 0);
+            img1.getUnselectedStyle().setPadding(0, 0, 0, 0);
+            img1.getSelectedStyle().setPadding(0, 0, 0, 0);
+            Label img2 = new Label("Tên bé");
+            if(Var.Babyname.length()>0) img2.setText(Var.Babyname);
+            b1.addComponent(img1);
+            b1.addComponent(img2);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        baby.addComponent(b1);
+        Container b2 = new Container(new BoxLayout(BoxLayout.X_AXIS));
+        Label b2name = new Label("Tháng tuổi:");
+        Label b2inform = new Label(Var.B2inform);
+        b2.addComponent(b2name);
+        b2.addComponent(b2inform);
+        Container b3 = new Container(new BoxLayout(BoxLayout.X_AXIS));
+        Label b3name = new Label("Cân nặng:");
+        Label b3inform = new Label(Var.B3inform);
+        b3.addComponent(b3name);
+        b3.addComponent(b3inform);
+        Container b4 = new Container(new BoxLayout(BoxLayout.X_AXIS));
+        Label b4name = new Label("Chiều cao:");
+        Label b4inform = new Label(Var.B4inform);
+        b4.addComponent(b4name);
+        b4.addComponent(b4inform);
+        baby.addComponent(b2);
+        baby.addComponent(b3);
+        baby.addComponent(b4);
+        baby.getStyle().setMargin(0, 0, 0, 0);
+        addComponent(baby);
 
     }
 //    protected void paint(Graphics g) {
@@ -98,8 +143,11 @@ public class ViewHome extends Form implements ActionListener{
 //        }
 
     public void actionPerformed(ActionEvent ae) {
-        for(int i=0;i<33;i++){
-            if(ae.getSource()==bt[i]){
+        if(ae.getSource()==img1){
+            Controller.getInstance().showInform();
+        }
+        for (int i = 0; i < 33; i++) {
+            if (ae.getSource() == bt[i]) {
                 Controller.getInstance().showChoice(i);
             }
         }

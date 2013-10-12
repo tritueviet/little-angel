@@ -13,10 +13,7 @@ import com.sun.lwuit.util.Resources;
 import event.Event;
 import javax.microedition.lcdui.Command;
 import javax.microedition.lcdui.Image;
-import views.LoadScreen;
-import views.ViewChoice;
-import views.ViewHome;
-import views.ViewHotLine;
+import views.*;
 
 /**
  *
@@ -95,6 +92,8 @@ public class Controller {
     }
     
     public void showHome(){
+        if(categoryBar.getVisibility()==false)
+            categoryBar.setVisibility(true);
         ViewHome viewHome= new ViewHome();
         //javax.microedition.lcdui.Display.getDisplay(main).setCurrent(viewHome);
         viewHome.show();
@@ -110,6 +109,18 @@ public class Controller {
         //javax.microedition.lcdui.Display.getDisplay(main).setCurrent(viewHome);
         viewchoice.show();
     
+    }
+    public void showInform(){
+        if(categoryBar.getVisibility()==true)
+            categoryBar.setVisibility(false);
+        ViewInform view = new ViewInform();
+        view.show();
+    }
+    public void showRemind(){
+        if(categoryBar.getVisibility()==true)
+            categoryBar.setVisibility(false);
+        ViewRemind view = new ViewRemind();
+        view.show();
     }
     
     
