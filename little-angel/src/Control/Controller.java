@@ -122,6 +122,18 @@ public class Controller {
         ViewRemind view = new ViewRemind();
         view.show();
     }
+    public void showKhamthai(){
+        if(categoryBar.getVisibility()==true)
+            categoryBar.setVisibility(false);
+        ViewKhamthai view = new ViewKhamthai();
+        view.show();
+    }
+    public void showTiemchung(){
+        if(categoryBar.getVisibility()==true)
+            categoryBar.setVisibility(false);
+        ViewTiemchung view = new ViewTiemchung();
+        view.show();
+    }
     
     
     

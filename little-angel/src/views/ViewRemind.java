@@ -40,9 +40,12 @@ public class ViewRemind extends Form implements ActionListener{
         addComponent(BorderLayout.NORTH, north);
         Container center = new Container(new BoxLayout(BoxLayout.Y_AXIS));
         try {
-            item1 = new Button(Image.createImage("/images/kham thai.PNG"));
-            item2 = new Button(Image.createImage("/images/tiemchung.PNG"));
-            item3 = new Button(Image.createImage("/images/chambe.PNG"));
+            item1 = new Button(Image.createImage("/images/khamthai1.png"));
+            item1.setUIID("Demobutton");
+            item2 = new Button(Image.createImage("/images/tiemchung1.png"));
+            item3 = new Button(Image.createImage("/images/chambe1.png"));
+            item2.setUIID("Demobutton");
+            item3.setUIID("Demobutton");
             center.addComponent(item1);
             center.addComponent(item2);
             center.addComponent(item3);
@@ -62,8 +65,12 @@ public class ViewRemind extends Form implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent ae) {
-        if(ae.getSource()==item1){}
-        if(ae.getSource()==item2){}
+        if(ae.getSource()==item1){
+            Controller.getInstance().showKhamthai();
+        }
+        if(ae.getSource()==item2){
+            Controller.getInstance().showTiemchung();
+        }
         if(ae.getSource()==item3){}
         if(ae.getSource()==back){
             Controller.getInstance().showChoice(Var.choice);

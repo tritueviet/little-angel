@@ -58,7 +58,6 @@ public class ViewInform extends Form implements ActionListener {
         b4inform.setConstraint(TextField.NUMERIC);
         b4.addComponent(b4name);
         b4.addComponent(b4inform);
-
         north.addComponent(b1);
         north.addComponent(b2);
         north.addComponent(b3);
