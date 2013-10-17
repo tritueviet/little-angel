@@ -32,7 +32,7 @@ public class ViewHome extends Form implements ActionListener {
        
                 
         this.setLayout(new BoxLayout(BoxLayout.X_AXIS));
-        Font createSystemFont = Font.createSystemFont(Font.FACE_SYSTEM, Font.STYLE_PLAIN, Font.SIZE_MEDIUM);
+        Font createSystemFont = Font.createSystemFont(Font.FACE_SYSTEM, Font.STYLE_PLAIN, Font.SIZE_LARGE);
         for (int i = 0; i < 24; i++) {
             if (i == 0) {
                 lb[i] = new Label("2 tuổi ");
@@ -48,14 +48,14 @@ public class ViewHome extends Form implements ActionListener {
         }
         for (int i = 0; i < 33; i++) {
             try {
-                bt[i] = new Button(Image.createImage("/images/iconbt.png"));
+                bt[i] = new Button(Image.createImage("/images/iconbt1.png"));
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
 
             lb[i].getStyle().setFont(createSystemFont);
-            lb[i].setPreferredSize(new Dimension(70, 20));
-            bt[i].setPreferredSize(new Dimension(20, 20));
+            lb[i].setPreferredSize(new Dimension(80, 25));
+            bt[i].setPreferredSize(new Dimension(25, 25));
 
             bt[i].addActionListener(this);
 
