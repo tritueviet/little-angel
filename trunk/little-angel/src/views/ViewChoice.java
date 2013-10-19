@@ -23,8 +23,10 @@ public class ViewChoice extends Form implements ActionListener {
     public List list = new List();
     Command item2, item3, item4, item5;
     Command back;
-    public ViewChoice(int vt) {
+    private int vt=0;
+    public ViewChoice(final int vt) {
         setLayout(new BorderLayout());
+        this.vt=vt;
         Container north = new Container(new BoxLayout(BoxLayout.X_AXIS));
         try {
             Image img =  Image.createImage("/images/baby.PNG");
@@ -45,13 +47,13 @@ public class ViewChoice extends Form implements ActionListener {
         
         try {
            
-            item2 = new Command("Kien thuc chung", Image.createImage("/images/nenlam1.PNG"));
-            item3 = new Command("Sức khỏe", Image.createImage("/images/nenlam3.PNG"));
-            item4 = new Command("Nhắc nhở", Image.createImage("/images/nenlam4.PNG"));
+            item2 = new Command("kiến thức bổ sung", Image.createImage("/images/nenlam1.PNG"));
+//            item3 = new Command("Sức khỏe", Image.createImage("/images/nenlam3.PNG"));
+//            item4 = new Command("Nhắc nhở", Image.createImage("/images/nenlam4.PNG"));
             item5 = new Command("Chế độ dinh dưỡng", Image.createImage("/images/nenlam5.PNG"));
             list.addItem(item2);
-            list.addItem(item3);
-            list.addItem(item4);
+//            list.addItem(item3);
+//            list.addItem(item4);
             list.addItem(item5);
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -63,11 +65,13 @@ public class ViewChoice extends Form implements ActionListener {
             public void actionPerformed(ActionEvent ae) {
 
                 int t = list.getSelectedIndex();
-                    if(t==2){
-                          Controller.getInstance().showRemind();
+                    
+                    if(t==0){
+                        Controller.getInstance().viewBoSung(vt);
                     }
-
-
+                    if(t==1){
+                        //  show cái mới của anh dữ liêu lấy sau
+                    }
             }
         });
         addComponent(BorderLayout.CENTER,list);
