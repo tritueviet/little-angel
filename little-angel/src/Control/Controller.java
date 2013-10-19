@@ -13,6 +13,7 @@ import com.sun.lwuit.util.Resources;
 import event.Event;
 import javax.microedition.lcdui.Command;
 import javax.microedition.lcdui.Image;
+import models.readData;
 import views.*;
 
 /**
@@ -85,76 +86,103 @@ public class Controller {
         switch (eventType) {
             case Event.ACTION_HOME:
                 showHome();
-                    break;
-                
-                    
+                break;
+
+
         }
     }
-    
-    public void showHome(){
-        if(categoryBar.getVisibility()==false)
+
+    public void viewBoSung(int k) {
+        if (categoryBar.getVisibility() == true) {
+            categoryBar.setVisibility(false);
+        }
+        readData read = new readData();
+        ViewBoSung viewBoSung = new ViewBoSung(k, read.read(k));
+        viewBoSung.show();
+    }
+
+    public void showHome() {
+        if (categoryBar.getVisibility() == false) {
             categoryBar.setVisibility(true);
-        ViewHome viewHome= new ViewHome();
+        }
+        ViewHome viewHome = new ViewHome();
         //javax.microedition.lcdui.Display.getDisplay(main).setCurrent(viewHome);
         viewHome.show();
-    
+
     }
-    public void showHotLine(){
+
+    public void showHotLine() {
         ViewHotLine viewhot = new ViewHotLine();
         viewhot.show();
-    
+
     }
-    public void showChoice(int i){
-        ViewChoice viewchoice= new ViewChoice(i);
+
+    public void showChoice(int i) {
+        if (categoryBar.getVisibility() == true) {
+            categoryBar.setVisibility(false);
+        }
+        ViewChoice viewchoice = new ViewChoice(i);
         //javax.microedition.lcdui.Display.getDisplay(main).setCurrent(viewHome);
         viewchoice.show();
-    
+
     }
-    public void showInform(){
-        if(categoryBar.getVisibility()==true)
+
+    public void showInform() {
+        if (categoryBar.getVisibility() == true) {
             categoryBar.setVisibility(false);
+        }
         ViewInform view = new ViewInform();
         view.show();
     }
-    public void showRemind(){
-        if(categoryBar.getVisibility()==true)
+
+    public void showRemind() {
+        if (categoryBar.getVisibility() == true) {
             categoryBar.setVisibility(false);
+        }
         ViewRemind view = new ViewRemind();
         view.show();
     }
-    public void showKhamthai(){
-        if(categoryBar.getVisibility()==true)
+
+    public void showKhamthai() {
+        if (categoryBar.getVisibility() == true) {
             categoryBar.setVisibility(false);
+        }
         ViewKhamthai view = new ViewKhamthai();
         view.show();
     }
-    public void showTiemchung(){
-        if(categoryBar.getVisibility()==true)
+
+    public void showTiemchung() {
+        if (categoryBar.getVisibility() == true) {
             categoryBar.setVisibility(false);
+        }
         ViewTiemchung view = new ViewTiemchung();
         view.show();
     }
-    public void showKhamTiem(){
-        if(categoryBar.getVisibility()==true)
+
+    public void showKhamTiem() {
+        if (categoryBar.getVisibility() == true) {
             categoryBar.setVisibility(false);
+        }
         ViewKhamTiem view = new ViewKhamTiem();
         view.show();
     }
-    public void showViewDate(){
-        if(categoryBar.getVisibility()==true)
+
+    public void showViewDate() {
+        if (categoryBar.getVisibility() == true) {
             categoryBar.setVisibility(false);
+        }
         ViewDate view = new ViewDate();
         view.show();
     }
-     public void showViewTime(){
-        if(categoryBar.getVisibility()==true)
+
+    public void showViewTime() {
+        if (categoryBar.getVisibility() == true) {
             categoryBar.setVisibility(false);
+        }
         ViewTime view = new ViewTime();
         view.show();
     }
-    
-    
-    
+
     public void exit() {
         //   saveConfig();
         main.destroyApp(true);
@@ -168,6 +196,7 @@ public class Controller {
 //        } catch (Throwable ex) {
 //        }
 //    }
+
     class CategoryElementListener implements ElementListener {
 
         public void notifyElementSelected(CategoryBar bar, int selectedIndex) {
