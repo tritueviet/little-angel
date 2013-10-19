@@ -27,13 +27,50 @@ public class ViewHome extends Form implements ActionListener {
     public Container tablename = new Container(new BoxLayout(BoxLayout.Y_AXIS));
     public Button[] bt = new Button[81];
     public Label[] lb = new Label[81];
-    Button img1;
+    Button img1, sucKhoe, NhacNho;
 
     public ViewHome() {
 
 
         this.setLayout(new BoxLayout(BoxLayout.X_AXIS));
         Font createSystemFont = Font.createSystemFont(Font.FACE_SYSTEM, Font.STYLE_PLAIN, Font.SIZE_LARGE);
+        for (int i = 0; i < 35; i++) {
+            lb[i] = new Label((35 - (i - 1)) + " tháng tuổi");
+            try {
+                if (i != 80 || i != 0 || i != 39) {
+                    bt[i] = new Button(Image.createImage("/images/iconbt1.png"));
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+        try {
+
+            bt[35] = new Button(Image.createImage("/images/iconbt1.png"));
+            bt[36] = new Button(Image.createImage("/images/iconbt1.png"));
+            bt[37] = new Button(Image.createImage("/images/iconbt1.png"));
+            bt[38] = new Button(Image.createImage("/images/iconbt1.png"));
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        lb[35] = new Label("4 tuần tuổi");
+        lb[36] = new Label("3 tuần tuổi ");
+        lb[37] = new Label("2 tuần tuổi ");
+        lb[38] = new Label("1 tuần tuổi ");
+
+        lb[39] = new Label("Sinh con");
+
+        for (int i = 40; i < 81; i++) {
+            lb[i] = new Label("thai kỳ tuần " + (81 - i));
+            try {
+                if (i != 80 || i != 0 || i != 39) {
+                    bt[i] = new Button(Image.createImage("/images/iconbt1.png"));
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
         //  3 màu buttum khác  0 39 80
         try {
             bt[0] = new Button(Image.createImage("/images/iconbt2.png"));
@@ -43,51 +80,8 @@ public class ViewHome extends Form implements ActionListener {
             ex.printStackTrace();
         }
 
-        for (int i = 0; i < 35; i++) {
-            lb[i] = new Label((35 - (i - 1)) + " tháng tuổi");
-            try {
-                if (i != 0) {
-                    bt[i] = new Button(Image.createImage("/images/iconbt1.png"));
-                }
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
-        lb[35] = new Label(
-                "4 tuần tuổi");
-        lb[36] = new Label(
-                "3 tuần tuổi ");
-        lb[37] = new Label(
-                "2 tuần tuổi ");
-        lb[38] = new Label(
-                "1 tuần tuổi ");
-
-        lb[39] = new Label(
-                "Sinh con");
-
-
-        for (int i = 0;
-                i
-                < 39; i++) {
-            try {
-                bt[i] = new Button(Image.createImage("/images/iconbt1.png"));
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
-
-        for (int i = 40; i < 81; i++) {
-            lb[i] = new Label("thai kỳ tuần " + (81 - i));
-            try {
-                if (i != 80) {
-                    bt[i] = new Button(Image.createImage("/images/iconbt1.png"));
-                }
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
-
         for (int i = 0; i < 81; i++) {
+
             lb[i].getStyle().setFont(createSystemFont);
             lb[i].setPreferredSize(new Dimension(80, 25));
             bt[i].setPreferredSize(new Dimension(25, 25));
@@ -121,18 +115,16 @@ public class ViewHome extends Form implements ActionListener {
             table.addComponent(bt[i]);
             tablename.addComponent(lb[i]);
         }
-
-        addComponent(tablename);
-
-        addComponent(table);
-
         table.getStyle().setMargin(0, 0, 0, 0);
         tablename.getStyle().setMargin(0, 0, 0, 0);
+        Container con = new Container();
+        con.setScrollableY(true);
+        con.addComponent(tablename);
+        con.addComponent(table);
+        addComponent(con);
+        setScrollableY(false);
         Container baby = new Container(new BoxLayout(BoxLayout.Y_AXIS));
         Container b1 = new Container(new BoxLayout(BoxLayout.X_AXIS));
-
-
-
         try {
             img1 = new Button(Image.createImage("/images/baby.PNG"));
             img1.setPreferredSize(new Dimension(39, 32));
@@ -146,12 +138,12 @@ public class ViewHome extends Form implements ActionListener {
             img1.getPressedStyle().setPadding(0, 0, 0, 0);
             img1.getUnselectedStyle().setPadding(0, 0, 0, 0);
             img1.getSelectedStyle().setPadding(0, 0, 0, 0);
-            Label img2 = new Label("Tên bé");
+            Label lbName = new Label("Tên bé:");
             if (Var.Babyname.length() > 0) {
-                img2.setText(Var.Babyname);
+                lbName.setText(Var.Babyname);
             }
             b1.addComponent(img1);
-            b1.addComponent(img2);
+            b1.addComponent(lbName);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -186,27 +178,35 @@ public class ViewHome extends Form implements ActionListener {
         baby.addComponent(b4);
 
         baby.getStyle().setMargin(0, 0, 0, 0);
+        
+        try {
+            sucKhoe = new Button("Sức khỏe", Image.createImage("/images/nenlam3.PNG"));
+            NhacNho = new Button("Nhắc nhở", Image.createImage("/images/nenlam4.PNG"));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        baby.addComponent(sucKhoe);
+        baby.addComponent(NhacNho);
         addComponent(baby);
     }
-//    protected void paint(Graphics g) {
-//        g.setColor(0xffffff);
-//        g.fillRect(0, 0, 240, 800);
-//        g.setColor(0x333333);
-//        g.fillRect(40,0,3, 800);
-//        g.setColor(0xEE0000);
-//        for(int i=0;i<33;i++){
-//            g.fillArc(40, i*20+i*4, 4,4, 0, 360);
-//        
-//        }
 
     public void actionPerformed(ActionEvent ae) {
+        if(ae.getSource()==NhacNho){
+            Controller.getInstance().showRemind();
+        }
+        else if(ae.getSource()==sucKhoe){
+            //  showw sức khỏe
+        }else
         if (ae.getSource() == img1) {
             Controller.getInstance().showInform();
         }
+        else
         for (int i = 0; i < 81; i++) {
             if (ae.getSource() == bt[i] && i != 39) {
                 Controller.getInstance().showChoice(i);
             }
         }
+        
     }
 }

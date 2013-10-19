@@ -36,7 +36,7 @@ public class ViewBoSung extends Form implements ActionListener {
         Font font = Font.createSystemFont(Font.FACE_SYSTEM, Font.STYLE_PLAIN, Font.SIZE_SMALL);
         TextArea textArea = null;
 
-        textArea = new TextArea(string.substring(1), 2, 10);
+        textArea = new TextArea(string.substring(1), 2, 20);
 
 
         textArea.setEditable(false);
