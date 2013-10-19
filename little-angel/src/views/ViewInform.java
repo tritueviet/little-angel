@@ -31,7 +31,8 @@ public class ViewInform extends Form implements ActionListener {
         Container north = new Container(new BoxLayout(BoxLayout.Y_AXIS));
 
         Container b1 = new Container(new BoxLayout(BoxLayout.X_AXIS));
-        Label b1name = new Label("Tên bé:");
+        Label b1name = new Label("Tên bé:        ");
+                                  
         b1inform = new TextField();
         b1.addComponent(b1name);
         b1.addComponent(b1inform);
@@ -45,7 +46,8 @@ public class ViewInform extends Form implements ActionListener {
 
 
         Container b3 = new Container(new BoxLayout(BoxLayout.X_AXIS));
-        Label b3name = new Label("Cân nặng:");
+        Label b3name = new Label("Cân nặng:   ");
+                                  
         b3inform = new TextField();
         b3inform.setConstraint(TextField.NUMERIC);
         b3.addComponent(b3name);
@@ -53,7 +55,7 @@ public class ViewInform extends Form implements ActionListener {
 
 
         Container b4 = new Container(new BoxLayout(BoxLayout.X_AXIS));
-        Label b4name = new Label("Chiều cao:");
+        Label b4name = new Label("Chiều cao:   ");
         b4inform = new TextField();
         b4inform.setConstraint(TextField.NUMERIC);
         b4.addComponent(b4name);
