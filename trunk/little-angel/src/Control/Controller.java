@@ -134,6 +134,24 @@ public class Controller {
         ViewTiemchung view = new ViewTiemchung();
         view.show();
     }
+    public void showKhamTiem(){
+        if(categoryBar.getVisibility()==true)
+            categoryBar.setVisibility(false);
+        ViewKhamTiem view = new ViewKhamTiem();
+        view.show();
+    }
+    public void showViewDate(){
+        if(categoryBar.getVisibility()==true)
+            categoryBar.setVisibility(false);
+        ViewDate view = new ViewDate();
+        view.show();
+    }
+     public void showViewTime(){
+        if(categoryBar.getVisibility()==true)
+            categoryBar.setVisibility(false);
+        ViewTime view = new ViewTime();
+        view.show();
+    }
     
     
     

@@ -21,7 +21,7 @@ import java.io.IOException;
 public class ViewChoice extends Form implements ActionListener {
 
     public List list = new List();
-    Command item1, item2, item3, item4, item5;
+    Command item2, item3, item4, item5;
     Command back;
     public ViewChoice(int vt) {
         setLayout(new BorderLayout());
@@ -44,12 +44,11 @@ public class ViewChoice extends Form implements ActionListener {
         list.setModel(new DefaultListModel());
         
         try {
-            item1 = new Command("Bạn nên làm", Image.createImage("/images/nenlam1.PNG"));
-            item2 = new Command("Bạn không nên làm", Image.createImage("/images/nenlam1.PNG"));
+           
+            item2 = new Command("Kien thuc chung", Image.createImage("/images/nenlam1.PNG"));
             item3 = new Command("Sức khỏe", Image.createImage("/images/nenlam3.PNG"));
             item4 = new Command("Nhắc nhở", Image.createImage("/images/nenlam4.PNG"));
             item5 = new Command("Chế độ dinh dưỡng", Image.createImage("/images/nenlam5.PNG"));
-            list.addItem(item1);
             list.addItem(item2);
             list.addItem(item3);
             list.addItem(item4);
@@ -64,7 +63,7 @@ public class ViewChoice extends Form implements ActionListener {
             public void actionPerformed(ActionEvent ae) {
 
                 int t = list.getSelectedIndex();
-                    if(t==3){
+                    if(t==2){
                           Controller.getInstance().showRemind();
                     }
 

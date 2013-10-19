@@ -12,6 +12,7 @@ import com.sun.lwuit.events.ActionEvent;
 import com.sun.lwuit.events.ActionListener;
 import com.sun.lwuit.layouts.BorderLayout;
 import com.sun.lwuit.layouts.BoxLayout;
+import com.sun.lwuit.layouts.GridLayout;
 import com.sun.lwuit.spinner.Spinner;
 import com.sun.lwuit.table.TableLayout;
 import java.io.IOException;
@@ -24,6 +25,8 @@ import javax.microedition.lcdui.DateField;
 public class ViewKhamthai extends Form implements ActionListener{
     private final int DAY = 86400000;
     Command back ;
+    Button bt = new Button("Save");
+    Button c2date,c4date;
     public ViewKhamthai() {
         setLayout(new BorderLayout());
         Container north = new Container(new BoxLayout(BoxLayout.X_AXIS));
@@ -45,35 +48,39 @@ public class ViewKhamthai extends Form implements ActionListener{
         Container center = new Container(new BoxLayout(BoxLayout.Y_AXIS));
         Label c1 = new Label("Cai dat nhac nho kham thai");
         center.addComponent(c1); 
+        Container center1 = new Container(new GridLayout(3,2));
         
-        Container c2 = new Container(new BoxLayout(BoxLayout.X_AXIS));
         Label c2name = new Label("ngay co thai");
-        TextField c2date = new TextField();
-        c2.addComponent(c2name);
-        c2.addComponent(c2date);
-        center.addComponent(c2);
+        c2date = new Button(Var.stringc2);
+        c2date.addActionListener(this);
+        center1.addComponent(c2name);
+        center1.addComponent(c2date);
         
-        Container c3 = new Container(new BoxLayout(BoxLayout.X_AXIS));
         Label c3name = new Label("so lan kham");
         TextField c3date = new TextField();
-        c3.addComponent(c3name);
-        c3.addComponent(c3date);
-        center.addComponent(c3);
+        center1.addComponent(c3name);
+        center1.addComponent(c3date);
         
-        Container c4 = new Container(new BoxLayout(BoxLayout.X_AXIS));
         Label c4name = new Label("thoi gian");
-        TextField c4date = new TextField();
-        c4.addComponent(c4name);
-        c4.addComponent(c4date);
-        center.addComponent(c4);
+        c4date = new Button(Var.stringc4);
+        c4date.addActionListener(this);
+        center1.addComponent(c4name);
+        center1.addComponent(c4date);
+        
+        center.addComponent(center1);
         addComponent(BorderLayout.CENTER,center);
         
-        Spinner dateSpinner = Spinner.createDate(System.currentTimeMillis() - 1000 * DAY,
-                System.currentTimeMillis() + 1000 * DAY, System.currentTimeMillis(),
-                '-', Spinner.DATE_FORMAT_MM_DD_YYYY);
+//        Spinner dateSpinner = Spinner.createDate(System.currentTimeMillis() - 1000 * DAY,
+//                System.currentTimeMillis() + 1000 * DAY, System.currentTimeMillis(),
+//                '-', Spinner.DATE_FORMAT_MM_DD_YYYY);
+//        
+//        c2date.setConstraint(DateField.DATE_TIME);
+//        c4date.setConstraint(DateField.DATE_TIME);
         
-        c2date.setConstraint(DateField.DATE_TIME);
-        c4date.setConstraint(DateField.DATE_TIME);
+//        Container c5 = new Container(new BoxLayout(BoxLayout.X_AXIS));
+//        c5.addComponent(bt);
+        addComponent(BorderLayout.SOUTH,bt);
+        bt.addActionListener(this);
         
         back = new Command("Back");
         addCommandListener(this);
@@ -86,6 +93,15 @@ public class ViewKhamthai extends Form implements ActionListener{
        
         if(ae.getSource()==back){
             Controller.getInstance().showRemind();
+        }
+        if(ae.getSource()==bt){
+            Controller.getInstance().showKhamTiem();
+        }
+        if(ae.getSource()==c2date){
+            Controller.getInstance().showViewDate();
+        }
+        if(ae.getSource()==c4date){
+            Controller.getInstance().showKhamTiem();
         }
     }
 }

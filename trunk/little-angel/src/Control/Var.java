@@ -12,4 +12,5 @@ public class Var {
     public static  String B2inform = "",B3inform = "",B4inform= ""; 
     public static  String Babyname = "";
     public static int choice = 0;
+    public static String stringc2 = "_/_/_",stringc4 = "_:_";
 }
