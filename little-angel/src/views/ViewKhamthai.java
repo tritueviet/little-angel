@@ -10,6 +10,7 @@ import com.sun.lwuit.*;
 import com.sun.lwuit.Label;
 import com.sun.lwuit.events.ActionEvent;
 import com.sun.lwuit.events.ActionListener;
+import com.sun.lwuit.geom.Dimension;
 import com.sun.lwuit.layouts.BorderLayout;
 import com.sun.lwuit.layouts.BoxLayout;
 import com.sun.lwuit.layouts.GridLayout;
@@ -55,9 +56,12 @@ public class ViewKhamthai extends Form implements ActionListener{
         c2date.addActionListener(this);
         center1.addComponent(c2name);
         center1.addComponent(c2date);
+        c2name.setPreferredSize(new Dimension(50, 30));
+        c2date.setPreferredSize(new Dimension(50, 30));
         
         Label c3name = new Label("so lan kham");
         TextField c3date = new TextField();
+        c3date.setConstraint(TextField.NUMERIC);
         center1.addComponent(c3name);
         center1.addComponent(c3date);
         
@@ -66,20 +70,14 @@ public class ViewKhamthai extends Form implements ActionListener{
         c4date.addActionListener(this);
         center1.addComponent(c4name);
         center1.addComponent(c4date);
+        c4name.setPreferredSize(new Dimension(50, 30));
+        c4date.setPreferredSize(new Dimension(50, 30));
         
         center.addComponent(center1);
         addComponent(BorderLayout.CENTER,center);
         
-//        Spinner dateSpinner = Spinner.createDate(System.currentTimeMillis() - 1000 * DAY,
-//                System.currentTimeMillis() + 1000 * DAY, System.currentTimeMillis(),
-//                '-', Spinner.DATE_FORMAT_MM_DD_YYYY);
-//        
-//        c2date.setConstraint(DateField.DATE_TIME);
-//        c4date.setConstraint(DateField.DATE_TIME);
-        
-//        Container c5 = new Container(new BoxLayout(BoxLayout.X_AXIS));
-//        c5.addComponent(bt);
         addComponent(BorderLayout.SOUTH,bt);
+        bt.setPreferredSize(new Dimension(50, 30));
         bt.addActionListener(this);
         
         back = new Command("Back");
@@ -101,7 +99,7 @@ public class ViewKhamthai extends Form implements ActionListener{
             Controller.getInstance().showViewDate();
         }
         if(ae.getSource()==c4date){
-            Controller.getInstance().showKhamTiem();
+            Controller.getInstance().showViewTime();
         }
     }
 }

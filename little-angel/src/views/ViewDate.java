@@ -9,7 +9,9 @@ import Control.Var;
 import com.sun.lwuit.*;
 import com.sun.lwuit.events.ActionEvent;
 import com.sun.lwuit.events.ActionListener;
+import com.sun.lwuit.geom.Dimension;
 import com.sun.lwuit.layouts.BorderLayout;
+import com.sun.lwuit.layouts.BoxLayout;
 import com.sun.lwuit.layouts.GridLayout;
 
 /**
@@ -32,18 +34,32 @@ public class ViewDate extends Form implements ActionListener {
         Label day = new Label("Nhập ngày: ");
         Label month = new Label("Nhập tháng: ");
         Label year = new Label("Nhập năm: ");
-
+        tday.setConstraint(TextField.NUMERIC);
+        tmonth.setConstraint(TextField.NUMERIC);
+        tyear.setConstraint(TextField.NUMERIC);
         center.addComponent(day);
         center.addComponent(tday);
         center.addComponent(month);
         center.addComponent(tmonth);
         center.addComponent(year);
         center.addComponent(tyear);
-
+        day.setPreferredSize(new Dimension(50, 30));
+        tday.setPreferredSize(new Dimension(50, 30));
+        month.setPreferredSize(new Dimension(50, 30));
+        tmonth.setPreferredSize(new Dimension(50, 30));
+        year.setPreferredSize(new Dimension(50, 30));
+        tyear.setPreferredSize(new Dimension(50, 30));
         addComponent(BorderLayout.CENTER, center);
+        
+        Container space = new Container();
+        space.setPreferredSize(new Dimension(240, 190));
+        
+        Container south = new Container(new BoxLayout(BoxLayout.Y_AXIS));
+        south.addComponent(space);
         save = new Button("Save");
         save.addActionListener(this);
-        addComponent(BorderLayout.SOUTH, save);
+        south.addComponent(save);
+        addComponent(BorderLayout.SOUTH, south);
 
         back = new Command("Back");
         addCommandListener(this);
