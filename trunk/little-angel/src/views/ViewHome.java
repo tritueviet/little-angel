@@ -182,6 +182,10 @@ public class ViewHome extends Form implements ActionListener {
         try {
             sucKhoe = new Button("Sức khỏe", Image.createImage("/images/nenlam3.PNG"));
             NhacNho = new Button("Nhắc nhở", Image.createImage("/images/nenlam4.PNG"));
+            NhacNho.addActionListener(this);
+            sucKhoe.addActionListener(this);
+            sucKhoe.setUIID("Demobutton");
+            NhacNho.setUIID("Demobutton");
         } catch (IOException ex) {
             ex.printStackTrace();
         }

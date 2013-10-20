@@ -9,7 +9,9 @@ import Control.Var;
 import com.sun.lwuit.*;
 import com.sun.lwuit.events.ActionEvent;
 import com.sun.lwuit.events.ActionListener;
+import com.sun.lwuit.geom.Dimension;
 import com.sun.lwuit.layouts.BorderLayout;
+import com.sun.lwuit.layouts.BoxLayout;
 import com.sun.lwuit.layouts.GridLayout;
 
 /**
@@ -29,18 +31,28 @@ public class ViewTime extends Form implements ActionListener{
         center.setLayout(new GridLayout(3, 2));
         Label hour = new Label("Nhập giờ: ");
         Label minute = new Label("Nhập phút: ");
-        
+        thour.setConstraint(TextField.NUMERIC);
+        tminute.setConstraint(TextField.NUMERIC);
 
         center.addComponent(hour);
         center.addComponent(thour);
         center.addComponent(minute);
         center.addComponent(tminute);
+        hour.setPreferredSize(new Dimension(50, 30));
+        thour.setPreferredSize(new Dimension(50, 30));
+        minute.setPreferredSize(new Dimension(50, 30));
+        tminute.setPreferredSize(new Dimension(50, 30));
         
+        Container space = new Container();
+        space.setPreferredSize(new Dimension(240, 200));
 
         addComponent(BorderLayout.CENTER, center);
+        Container south = new Container(new BoxLayout(BoxLayout.Y_AXIS));
+        south.addComponent(space);
         save = new Button("Save");
         save.addActionListener(this);
-        addComponent(BorderLayout.SOUTH, save);
+        south.addComponent(save);
+        addComponent(BorderLayout.SOUTH, south);
 
         back = new Command("Back");
         addCommandListener(this);
