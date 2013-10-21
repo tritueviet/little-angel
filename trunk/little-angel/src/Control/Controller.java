@@ -4,14 +4,17 @@
  */
 package Control;
 
+import views.Time.ViewDate;
+import views.Time.ViewTime;
+import views.Time.ViewTime2;
 import com.nokia.mid.ui.CategoryBar;
 import com.nokia.mid.ui.ElementListener;
 import com.nokia.mid.ui.IconCommand;
-import com.sun.lwuit.Display;
 import com.sun.lwuit.plaf.UIManager;
 import com.sun.lwuit.util.Resources;
 import event.Event;
 import javax.microedition.lcdui.Command;
+import javax.microedition.lcdui.Display;
 import javax.microedition.lcdui.Image;
 import models.readData;
 import views.*;
@@ -166,13 +169,29 @@ public class Controller {
         ViewKhamTiem view = new ViewKhamTiem();
         view.show();
     }
+    public void showChamBe() {
+        if (categoryBar.getVisibility() == true) {
+            categoryBar.setVisibility(false);
+        }
+        ViewChamBe view = new ViewChamBe();
+        view.show();
+    }
+     public void showReminder(String tittle) {
+        if (categoryBar.getVisibility() == true) {
+            categoryBar.setVisibility(false);
+        }
+        ViewReminder view = new ViewReminder(tittle);
+        Display display = Display.getDisplay(main);
+        display.setCurrent(view);
+    }
 
     public void showViewDate() {
         if (categoryBar.getVisibility() == true) {
             categoryBar.setVisibility(false);
         }
         ViewDate view = new ViewDate();
-        view.show();
+        Display display = Display.getDisplay(main);
+        display.setCurrent(view);
     }
 
     public void showViewTime() {
@@ -180,7 +199,16 @@ public class Controller {
             categoryBar.setVisibility(false);
         }
         ViewTime view = new ViewTime();
-        view.show();
+        Display display = Display.getDisplay(main);
+        display.setCurrent(view);
+    }
+    public void showViewTime2() {
+        if (categoryBar.getVisibility() == true) {
+            categoryBar.setVisibility(false);
+        }
+        ViewTime2 view = new ViewTime2();
+        Display display = Display.getDisplay(main);
+        display.setCurrent(view);
     }
 
     public void exit() {

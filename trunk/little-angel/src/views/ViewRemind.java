@@ -71,9 +71,11 @@ public class ViewRemind extends Form implements ActionListener{
         if(ae.getSource()==item2){
             Controller.getInstance().showTiemchung();
         }
-        if(ae.getSource()==item3){}
+        if(ae.getSource()==item3){
+            Controller.getInstance().showChamBe();
+        }
         if(ae.getSource()==back){
-            Controller.getInstance().showChoice(Var.choice);
+            Controller.getInstance().showHome();
         }
     }
 }

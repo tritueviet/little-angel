@@ -60,8 +60,10 @@ public class ViewKhamthai extends Form implements ActionListener{
         c2date.setPreferredSize(new Dimension(50, 30));
         
         Label c3name = new Label("so lan kham");
-        TextField c3date = new TextField();
+        TextField c3date = new TextField("4");
         c3date.setConstraint(TextField.NUMERIC);
+        c3date.setEditable(false);
+       
         center1.addComponent(c3name);
         center1.addComponent(c3date);
         
