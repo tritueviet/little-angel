@@ -33,7 +33,7 @@ public class ViewHome extends Form implements ActionListener {
 
 
         this.setLayout(new BoxLayout(BoxLayout.X_AXIS));
-        Font createSystemFont = Font.createSystemFont(Font.FACE_SYSTEM, Font.STYLE_PLAIN, Font.SIZE_LARGE);
+        Font createSystemFont = Font.createSystemFont(Font.FACE_SYSTEM, Font.STYLE_PLAIN, Font.SIZE_SMALL);
         for (int i = 0; i < 35; i++) {
             lb[i] = new Label((35 - (i - 1)) + " tháng tuổi");
             try {
@@ -151,21 +151,21 @@ public class ViewHome extends Form implements ActionListener {
         baby.addComponent(b1);
         Container b2 = new Container(new BoxLayout(BoxLayout.X_AXIS));
         Label b2name = new Label("Tháng tuổi:");
-        Label b2inform = new Label(Var.B2inform);
+        Label b2inform = new Label(Var.THANG);
 
         b2.addComponent(b2name);
 
         b2.addComponent(b2inform);
         Container b3 = new Container(new BoxLayout(BoxLayout.X_AXIS));
         Label b3name = new Label("Cân nặng:");
-        Label b3inform = new Label(Var.B3inform);
+        Label b3inform = new Label(Var.CANNANG);
 
         b3.addComponent(b3name);
 
         b3.addComponent(b3inform);
         Container b4 = new Container(new BoxLayout(BoxLayout.X_AXIS));
         Label b4name = new Label("Chiều cao:");
-        Label b4inform = new Label(Var.B4inform);
+        Label b4inform = new Label(Var.CHIEUCAO);
 
         b4.addComponent(b4name);
 
@@ -176,7 +176,12 @@ public class ViewHome extends Form implements ActionListener {
         baby.addComponent(b3);
 
         baby.addComponent(b4);
-
+        Container b5 = new Container(new BoxLayout(BoxLayout.X_AXIS));
+        Label b5name = new Label("Giới tính:");
+        Label b5inform = new Label(Var.SEX);
+        b5.addComponent(b5name);
+        b5.addComponent(b5inform);
+        baby.addComponent(b5);
         baby.getStyle().setMargin(0, 0, 0, 0);
         
         try {
@@ -200,7 +205,7 @@ public class ViewHome extends Form implements ActionListener {
             Controller.getInstance().showRemind();
         }
         else if(ae.getSource()==sucKhoe){
-            //  showw sức khỏe
+            Controller.getInstance().showSucKhoe();
         }else
         if (ae.getSource() == img1) {
             Controller.getInstance().showInform();
