@@ -176,6 +176,13 @@ public class Controller {
         ViewChamBe view = new ViewChamBe();
         view.show();
     }
+    public void showSucKhoe() {
+        if (categoryBar.getVisibility() == true) {
+            categoryBar.setVisibility(false);
+        }
+        ViewSucKhoe view = new ViewSucKhoe();
+        view.show();
+    }
      public void showReminder(String tittle) {
         if (categoryBar.getVisibility() == true) {
             categoryBar.setVisibility(false);
