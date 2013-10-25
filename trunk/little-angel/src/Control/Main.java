@@ -15,6 +15,7 @@ public class Main extends MIDlet {
 
     public Main() {
         Display.init(this);
+        Controller.getInstance().loadConfig();
         
     }
 
@@ -27,6 +28,7 @@ public class Main extends MIDlet {
     }
     
     public void destroyApp(boolean unconditional) {
+        Controller.getInstance().updateConfig();
         notifyDestroyed();
     }
 }

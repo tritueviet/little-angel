@@ -16,6 +16,9 @@ import event.Event;
 import javax.microedition.lcdui.Command;
 import javax.microedition.lcdui.Display;
 import javax.microedition.lcdui.Image;
+import javax.microedition.rms.RecordEnumeration;
+import javax.microedition.rms.RecordStore;
+import javax.microedition.rms.RecordStoreException;
 import models.readData;
 import views.*;
 
@@ -30,6 +33,7 @@ public class Controller {
     public CategoryBar categoryBar;
     private Image icon;
     private Main main;
+    private String nameRecord = "chaobanwall";
 
     private Controller() {
         // Init here
@@ -221,6 +225,146 @@ public class Controller {
     public void exit() {
         //   saveConfig();
         main.destroyApp(true);
+    }
+     public void loadConfig() {
+        rs1();
+         System.out.println(""+Var.Babyname);
+         System.out.println(""+Var.CANNANG);
+         System.out.println(""+Var.CHIEUCAO);
+         System.out.println(""+Var.THANG);
+         System.out.println(""+Var.SEX);
+        //rs2();
+        //rs3();
+    }
+    public void updateConfig() {
+        try {
+            //if()RecordStore.deleteRecordStore(nameRecord);
+            RecordStore rs = RecordStore.openRecordStore(nameRecord, true);
+            RecordEnumeration re = rs.enumerateRecords(null, null, false);
+            int rid = 0;
+            while (re.hasNextElement()) {
+                rid = re.nextRecordId();
+                rs.deleteRecord(rid);
+            }
+            byte[] data;
+                rs = RecordStore.openRecordStore(nameRecord , true);
+                re = rs.enumerateRecords(null, null, false);
+                rid = 0;
+                while (re.hasNextElement()) {
+                    rid = re.nextRecordId();
+                    rs.deleteRecord(rid);
+
+                }
+                        data = Var.Babyname.getBytes();
+                        rs.addRecord(data, 0, data.length);
+                        data = Var.CANNANG.getBytes();
+                        rs.addRecord(data, 0, data.length);
+                        data = Var.CHIEUCAO.getBytes();
+                        rs.addRecord(data, 0, data.length);
+                        data = Var.THANG.getBytes();
+                        rs.addRecord(data, 0, data.length);
+                        data = Var.SEX.getBytes();
+                        rs.addRecord(data, 0, data.length);
+                        data = Var.stringc2.getBytes();
+                         if(data != null)
+                        rs.addRecord(data, 0, data.length);
+                        data = Var.stringc4.getBytes();
+                         if(data != null)
+                        rs.addRecord(data, 0, data.length);
+                        data = Var.stringtc.getBytes();
+                         if(data != null)
+                        rs.addRecord(data, 0, data.length);
+                
+                rs.closeRecordStore();
+
+        } catch (RecordStoreException ex) {
+            System.out.println("loi doc rms");
+            ex.printStackTrace();
+        }
+    }
+    public void rs1() {
+        try {
+            RecordStore rs = RecordStore.openRecordStore(nameRecord, true);
+            if (rs.getNumRecords() == 0) {
+                System.out.println("creat");
+                return;
+            }
+            byte[] data;
+            RecordEnumeration re = rs.enumerateRecords(null, null, false);
+            while (re.hasNextElement()) {
+                String s = new String(re.nextRecord());
+                System.out.println(""+s);
+                Var.Babyname = s;
+                s = new String(re.nextRecord());
+                System.out.println(""+s);
+                Var.CANNANG = s;
+                s = new String(re.nextRecord());
+                System.out.println(""+s);
+                Var.CHIEUCAO = s;
+                s = new String(re.nextRecord());
+                System.out.println(""+s);
+                Var.THANG = s;
+                s = new String(re.nextRecord());
+                System.out.println(""+s);
+                Var.SEX = s;    
+                s = new String(re.nextRecord());
+                if(s!=null)
+                Var.stringc2 = s;
+                s = new String(re.nextRecord());
+                if(s!=null)
+                Var.stringc4 = s;
+                s = new String(re.nextRecord());
+                if(s!=null)
+                Var.stringtc = s;
+                
+            }
+            rs.closeRecordStore();
+        } catch (RecordStoreException ex) {
+            System.out.println("loi doc recod");
+            ex.printStackTrace();
+        }
+    }
+
+    public void rs2() {
+        try {
+            RecordStore rs = RecordStore.openRecordStore(nameRecord + 1, true);
+            if (rs.getNumRecords() == 0) {
+                System.out.println("creat1");
+                return;
+            }
+            byte[] data;
+            RecordEnumeration re = rs.enumerateRecords(null, null, false);
+            while (re.hasNextElement()) {
+                String s = new String(re.nextRecord());
+                Var.stringc2 = s;
+                s = new String(re.nextRecord());
+                Var.stringc4 = s;
+            }
+            rs.closeRecordStore();
+        } catch (RecordStoreException ex) {
+            System.out.println("loi doc recod");
+            ex.printStackTrace();
+        }
+    }
+
+    public void rs3() {
+        try {
+            RecordStore rs = RecordStore.openRecordStore(nameRecord + 2, true);
+            if (rs.getNumRecords() == 0) {
+                System.out.println("creat2");
+                return;
+            }
+            byte[] data;
+            RecordEnumeration re = rs.enumerateRecords(null, null, false);
+            while (re.hasNextElement()) {
+                String s = new String(re.nextRecord());
+                Var.stringtc = s;
+            }
+            rs.closeRecordStore();
+        } catch (RecordStoreException ex) {
+            System.out.println("loi doc recod");
+            ex.printStackTrace();
+        }
     }
 //    public static void loadTheme() {
 //        try {
