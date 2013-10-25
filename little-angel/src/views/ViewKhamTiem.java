@@ -4,13 +4,8 @@
  */
 package views;
 
-import com.sun.lwuit.Component;
-import com.sun.lwuit.Container;
-import com.sun.lwuit.Font;
-import com.sun.lwuit.Form;
-import com.sun.lwuit.Label;
-import com.sun.lwuit.List;
-import com.sun.lwuit.Tabs;
+import Control.Controller;
+import com.sun.lwuit.*;
 import com.sun.lwuit.events.ActionEvent;
 import com.sun.lwuit.events.ActionListener;
 import com.sun.lwuit.layouts.BorderLayout;
@@ -25,6 +20,7 @@ import javax.microedition.pim.Contact;
 public class ViewKhamTiem extends Form implements ActionListener{
      Form kham = new Form("Kham thai");
      Form tiem = new Form("tiem chung");
+     Command back;
     public ViewKhamTiem(){
         setLayout(new BoxLayout(BoxLayout.Y_AXIS));
         Tabs t = new Tabs();
@@ -43,11 +39,15 @@ public class ViewKhamTiem extends Form implements ActionListener{
 //        Label a = new Label("fsd");
 //        tiem.addComponent(a);
 //        
+        back = new Command("Back");
+        addCommandListener(this);
+        setBackCommand(back);
+        addCommand(back);
         show();
         
     }
     public void actionPerformed(ActionEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Controller.getInstance().showRemind();
     }
     
 }
