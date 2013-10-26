@@ -35,7 +35,7 @@ public class Controller {
     public CategoryBar categoryBar;
     private Image icon;
     private Main main;
-    private String nameRecord = "wallrmslittleangle";
+    private String nameRecord = "wallrmslittleangl";
 
     private Controller() {
         // Init here
