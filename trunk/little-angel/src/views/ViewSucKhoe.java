@@ -42,7 +42,7 @@ public class ViewSucKhoe extends Form implements ActionListener {
         north.addComponent(gioitinh);
         north.addComponent(nhanxet);
         addComponent(BorderLayout.NORTH, north);
-        
+
 
         back = new Command("Back");
         addCommandListener(this);
@@ -54,6 +54,8 @@ public class ViewSucKhoe extends Form implements ActionListener {
     }
 
     public void tinh() {
+        
+        
         String gt = Var.SEX.toLowerCase().toString();
         int[] mau = {0, 1, 3, 6, 12, 18, 24, 36, 48, 60};
         int tg = Integer.parseInt(Var.THANG);
@@ -92,12 +94,11 @@ public class ViewSucKhoe extends Form implements ActionListener {
                     }
                     return;
                 }
-                
+
             }
             return;
-        }
-    else if(gt.equals("nu")==true){
-        for (int i = 0; i < mau.length; i++) {
+        } else if (gt.equals("nu") == true) {
+            for (int i = 0; i < mau.length; i++) {
                 if (mau[i] == tg) {
                     if (cn > Var.FEMALE_OBESITY[i]) {
                         rate = "Bé thừa cân!";
@@ -127,17 +128,17 @@ public class ViewSucKhoe extends Form implements ActionListener {
                         rate = "Suy dinh dưỡng !";
                     }
                     return;
-                }    
+                }
             }
             return;
-        }else{
-        return;
-    } 
+        } else {
+            return;
+        }
     }
 
     public void actionPerformed(ActionEvent ae) {
-       if(ae.getSource()==back){
-           Controller.getInstance().showHome();
-       }
+        if (ae.getSource() == back) {
+            Controller.getInstance().showHome();
+        }
     }
 }

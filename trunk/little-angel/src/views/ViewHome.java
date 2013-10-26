@@ -194,7 +194,8 @@ public class ViewHome extends Form implements ActionListener {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
+        sucKhoe.addActionListener(this);
+        NhacNho.addActionListener(this);
         baby.addComponent(sucKhoe);
         baby.addComponent(NhacNho);
         addComponent(baby);
