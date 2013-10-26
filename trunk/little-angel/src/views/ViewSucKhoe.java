@@ -97,7 +97,7 @@ public class ViewSucKhoe extends Form implements ActionListener {
 
             }
             return;
-        } else if (gt.equals("nu") == true) {
+        } else if (gt.equals("nữ") == true) {
             for (int i = 0; i < mau.length; i++) {
                 if (mau[i] >= tg) {
                     if (cn > Var.FEMALE_OBESITY[i]) {

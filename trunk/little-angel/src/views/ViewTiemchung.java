@@ -29,7 +29,9 @@ public class ViewTiemchung extends Form implements ActionListener {
     CheckBox []c1 = new CheckBox[Var.v1.length] ;     
     CheckBox []c2 = new CheckBox[Var.v2.length] ;     
     public ViewTiemchung() {
+        
         setLayout(new BorderLayout());
+        setTitle("tiêm chủng");
         Font createSystemFont = Font.createSystemFont(Font.FACE_SYSTEM, Font.STYLE_PLAIN, Font.SIZE_SMALL);
         Container north = new Container(new BoxLayout(BoxLayout.X_AXIS));
         try {
