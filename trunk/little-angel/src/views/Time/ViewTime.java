@@ -22,7 +22,7 @@ public class ViewTime extends Form implements CommandListener {
     DateField datefield;
     public ViewTime() {
         super("Time");
-        datefield = new DateField("Set time:", DateField.TIME);
+        datefield = new DateField("Set time:", DateField.DATE_TIME);
         datefield.setDate(new Date());
 
         back = new Command("Back", Command.BACK, 1);
@@ -39,9 +39,9 @@ public class ViewTime extends Form implements CommandListener {
            Controller.getInstance().showKhamthai();
        }
        if(c==save){
-           Calendar Cal = Calendar.getInstance();
+           Calendar Cal = Calendar.getInstance();     
            Cal.setTime(datefield.getDate());
-           Var.stringc4 = Cal.get(Cal.HOUR)+":"+Cal.get(Cal.MINUTE);
+           Var.stringc4 =  Cal.get(Cal.DAY_OF_MONTH)+"/"+Cal.get(Cal.MONTH)+"/" + Cal.get(Cal.YEAR)+ " "+Cal.get(Cal.HOUR)+":"+Cal.get(Cal.MINUTE);
            Controller.getInstance().showKhamthai();
        }
     }

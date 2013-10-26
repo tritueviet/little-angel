@@ -266,15 +266,18 @@ public class Controller {
                         data = Var.SEX.getBytes();
                         rs.addRecord(data, 0, data.length);
                         data = Var.stringc2.getBytes();
-                         if(data != null)
+                         if(data.length>0)
                         rs.addRecord(data, 0, data.length);
                         data = Var.stringc4.getBytes();
-                         if(data != null)
+                         if(data.length>0)
                         rs.addRecord(data, 0, data.length);
                         data = Var.stringtc.getBytes();
-                         if(data != null)
+                         if(data.length>0)
                         rs.addRecord(data, 0, data.length);
-                
+                         
+                for (int i = 1; i <= rs.getNumRecords(); i++) {
+                    System.out.println(new String(rs.getRecord(i)));
+                    }
                 rs.closeRecordStore();
 
         } catch (RecordStoreException ex) {
