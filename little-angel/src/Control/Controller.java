@@ -166,11 +166,11 @@ public class Controller {
         view.show();
     }
 
-    public void showKhamTiem() {
+    public void showKhamTiem(int index) {
         if (categoryBar.getVisibility() == true) {
             categoryBar.setVisibility(false);
         }
-        ViewKhamTiem view = new ViewKhamTiem();
+        ViewKhamTiem view = new ViewKhamTiem(index);
         view.show();
     }
     public void showChamBe() {

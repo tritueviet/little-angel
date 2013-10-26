@@ -37,4 +37,11 @@ public class Var {
         75.7, 82.3, 87.8, 96.1, 103.3, 110};
     public static final double[] MALE_SHORT = {46.1, 50.8, 57.3, 63.3, 71.0,
         76.9, 81.7, 88.7, 94.9, 100.7};
+   public  static String[] v1 = {"BCG", "r-HBvax", "DPT", "Vắc xin bại liệt uống",
+        "Quinaxem", "Rouvax ", "Vắc xin sởi ", "Vắc xin uốn ván hấp phụ"};
+    public static int []dd1 = new int[v1.length];  
+    public static String[] v2 = {"Infanrix-hexa", "Pentaxim", "Tetraxim", "Tritanrix ", "Euvax ", "Engerix", "Rotarix ", "Vaxigrip", "Act- Hib", "Hiberix", "Avaxim ", "Trimovax (ROR)", "MMR II",
+        "Priorix ", "Okavax ", "Varilrix", "Meningo A+C", "Pneumo 23", "Vắc xin uốn ván hấp phụ",
+        "Gardasil ", "Cervavix"};
+    public static int []dd2 = new int[v2.length];  
 }

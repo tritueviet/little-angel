@@ -5,6 +5,7 @@
 package views;
 
 import Control.Controller;
+import Control.Var;
 import com.sun.lwuit.*;
 import com.sun.lwuit.events.ActionEvent;
 import com.sun.lwuit.events.ActionListener;
@@ -21,21 +22,35 @@ public class ViewKhamTiem extends Form implements ActionListener{
      Form kham = new Form("Kham thai");
      Form tiem = new Form("tiem chung");
      Command back;
-    public ViewKhamTiem(){
+    public ViewKhamTiem(int index ){
         setLayout(new BoxLayout(BoxLayout.Y_AXIS));
         Tabs t = new Tabs();
        
         t.addTab("kham",kham);
         t.addTab("tiem",tiem);
+        t.setTabPlacement(TOP);
+        t.setSelectedIndex(index);
         addComponent(t);
         tiem.setLayout(new BoxLayout(BoxLayout.Y_AXIS));
         for(int i= 0;i<5;i++)
         {
-            ContactsRenderer c1 = new ContactsRenderer("mang thai",""+i);
-            ContactsRenderer c2 = new ContactsRenderer("tiem chung","" +i);
+            Renderer c1 = new Renderer("mang thai",""+i);
             kham.addComponent(c1);
-            tiem.addComponent(c2);
         }
+        for(int i= 0;i<Var.dd1.length;i++)
+        if(Var.dd1[i]==1){
+            Renderer c1 = new Renderer(Var.v1[i],Var.stringtc);
+            tiem.addComponent(c1);
+        }
+        for(int i= 0;i<Var.dd2.length;i++)
+        if(Var.dd2[i]==1){
+            Renderer c1 = new Renderer(Var.v2[i],Var.stringtc);
+            tiem.addComponent(c1);
+        }
+        tiem.setScrollableY(true);
+        kham.setScrollableY(true);
+        setScrollableY(true);
+              
 //        Label a = new Label("fsd");
 //        tiem.addComponent(a);
 //        
@@ -51,24 +66,23 @@ public class ViewKhamTiem extends Form implements ActionListener{
     }
     
 }
-class ContactsRenderer extends Container implements ListCellRenderer {
+class Renderer extends Container implements ListCellRenderer {
 
   private Label name = new Label("");
-  private Label email = new Label("");
-  private Label pic = new Label("");
+  private Label date = new Label("");
   private Label focus = new Label("");
 
-  public ContactsRenderer(String name,String email) {
+  public Renderer(String name,String date) {
       setLayout(new BorderLayout());
       this.name.setText(name);
-      this.email.setText(email);
-      addComponent(BorderLayout.WEST, pic);
+      this.date.setText(date);
+      //addComponent(BorderLayout.WEST, pic);
       Container cnt = new Container(new BoxLayout(BoxLayout.Y_AXIS));
       //this.name.getStyle().setBgTransparency(0);
       this.name.getStyle().setFont(Font.createSystemFont(Font.FACE_SYSTEM, Font.STYLE_BOLD, Font.SIZE_MEDIUM));
       //this.email.getStyle().setBgTransparency(0);
       cnt.addComponent(this.name);
-      cnt.addComponent(this.email);
+      cnt.addComponent(this.date);
       addComponent(BorderLayout.CENTER, cnt);
 
       //focus.getStyle().setBgTransparency(100);

@@ -41,7 +41,8 @@ public class ViewTime extends Form implements CommandListener {
        if(c==save){
            Calendar Cal = Calendar.getInstance();     
            Cal.setTime(datefield.getDate());
-           Var.stringc4 =  Cal.get(Cal.DAY_OF_MONTH)+"/"+Cal.get(Cal.MONTH)+"/" + Cal.get(Cal.YEAR)+ " "+Cal.get(Cal.HOUR)+":"+Cal.get(Cal.MINUTE);
+           Var.stringc4 =  Cal.get(Cal.DAY_OF_MONTH)+"/"+Cal.get(Cal.MONTH)+"/" 
+                   + Cal.get(Cal.YEAR)+ " "+Cal.get(Cal.HOUR)+":"+Cal.get(Cal.MINUTE);
            Controller.getInstance().showKhamthai();
        }
     }
