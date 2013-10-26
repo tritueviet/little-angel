@@ -40,7 +40,7 @@ public class ViewDate extends Form implements CommandListener {
        if(c==save){
            Calendar Cal = Calendar.getInstance();
            Cal.setTime(datefield.getDate());
-           Var.stringc2 = Cal.get(Cal.DATE)+"/"+Cal.get(Cal.MONTH)+"/"+Cal.get(Cal.YEAR);
+           Var.stringc2 = Cal.get(Cal.DAY_OF_MONTH)+"/"+Cal.get(Cal.MONTH)+"/" + Cal.get(Cal.YEAR);
            Controller.getInstance().showKhamthai();
        }
     }
