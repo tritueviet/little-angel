@@ -35,13 +35,13 @@ public class ViewInform extends Form implements ActionListener {
         Container b1 = new Container(new BoxLayout(BoxLayout.X_AXIS));
         Label b1name = new Label("Tên bé:        ");
         
-        b1inform = new TextField();
+        b1inform = new TextField(Var.Babyname);
         b1.addComponent(b1name);
         b1.addComponent(b1inform);
         
         Container b2 = new Container(new BoxLayout(BoxLayout.X_AXIS));
         Label b2name = new Label("Tháng tuổi:");
-        b2inform = new TextField();;
+        b2inform = new TextField(Var.THANG);;
         b2inform.setConstraint(TextField.NUMERIC);
         b2.addComponent(b2name);
         b2.addComponent(b2inform);
@@ -50,7 +50,7 @@ public class ViewInform extends Form implements ActionListener {
         Container b3 = new Container(new BoxLayout(BoxLayout.X_AXIS));
         Label b3name = new Label("Cân nặng:   ");
         
-        b3inform = new TextField();
+        b3inform = new TextField(Var.CANNANG);
         b3inform.setConstraint(TextField.NUMERIC);
         b3.addComponent(b3name);
         b3.addComponent(b3inform);
@@ -58,14 +58,14 @@ public class ViewInform extends Form implements ActionListener {
         
         Container b4 = new Container(new BoxLayout(BoxLayout.X_AXIS));
         Label b4name = new Label("Chiều cao:   ");
-        b4inform = new TextField();
+        b4inform = new TextField(Var.CHIEUCAO);
         b4inform.setConstraint(TextField.NUMERIC);
         b4.addComponent(b4name);
         b4.addComponent(b4inform);
         
         Container b5 = new Container(new BoxLayout(BoxLayout.X_AXIS));
         Label b5name = new Label("Giới tính:     ");
-        b5inform = new TextField();
+        b5inform = new TextField(Var.SEX);
         b5inform.setConstraint(TextField.ANY);
         b5.addComponent(b5name);
         b5.addComponent(b5inform);

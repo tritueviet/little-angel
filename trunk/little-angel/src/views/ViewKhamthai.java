@@ -95,7 +95,7 @@ public class ViewKhamthai extends Form implements ActionListener{
             Controller.getInstance().showRemind();
         }
         if(ae.getSource()==bt){
-            Controller.getInstance().showKhamTiem();
+            Controller.getInstance().showKhamTiem(0);
         }
         if(ae.getSource()==c2date){
             Controller.getInstance().showViewDate();
