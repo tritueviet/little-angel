@@ -5,6 +5,7 @@
 package views;
 
 import Control.Var;
+import com.nokia.lwuit.components.PopupChoiceGroup;
 import com.sun.lwuit.*;
 import com.sun.lwuit.events.ActionEvent;
 import com.sun.lwuit.events.ActionListener;
@@ -44,6 +45,8 @@ public class ViewInform extends Form implements ActionListener {
 
         Container b2 = new Container(new BoxLayout(BoxLayout.X_AXIS));
         Label b2name = new Label("Tháng tuổi:");
+        
+        
         if (Var.THANG.equals("*")) {
             b2inform = new TextField("");
         } else {
@@ -79,6 +82,16 @@ public class ViewInform extends Form implements ActionListener {
 
         Container b5 = new Container(new BoxLayout(BoxLayout.X_AXIS));
         Label b5name = new Label("Giới tính:     ");
+        String[] str= {"nam","nữ"};
+        final ComboBox combo= new ComboBox(str);
+        combo.setSelectedIndex(0);
+        
+        combo.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent ae) {
+                Var.SEX=combo.getSelectCommandText();
+            }
+        });
         if (Var.SEX.equals("*")) {
             b5inform = new TextField("");
         } else {
@@ -86,7 +99,8 @@ public class ViewInform extends Form implements ActionListener {
         }
         b5inform.setConstraint(TextField.ANY);
         b5.addComponent(b5name);
-        b5.addComponent(b5inform);
+        b5.addComponent(combo);
+//        b5.addComponent(b5inform);
 
         north.addComponent(b1);
         north.addComponent(b2);
