@@ -19,6 +19,7 @@ public class ViewHotLine extends Form {
     public List list = new List();
     public Command cm[] = new Command[5];
     public ViewHotLine(){
+        setTitle("hot line");
         list.setModel(new DefaultListModel());
         for(int i= 0;i<5;i++){
             cm[i] = new Command("sdt thu"+i);

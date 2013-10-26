@@ -31,6 +31,7 @@ public class ViewInform extends Form implements ActionListener {
 
     public ViewInform() {
         setLayout(new BorderLayout());
+        setTitle("thông tin bé");
         Container north = new Container(new BoxLayout(BoxLayout.Y_AXIS));
 
         Container b1 = new Container(new BoxLayout(BoxLayout.X_AXIS));
