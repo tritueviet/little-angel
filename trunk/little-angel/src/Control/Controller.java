@@ -37,8 +37,8 @@ public class Controller {
     public CategoryBar categoryBar;
     private Image icon;
     private Main main;
-    private String nameRecord = "wallrmslittle1";
-    private String nameVector = "nameVector1";
+    private String nameRecord = "wallrmslittle2";
+    private String nameVector = "nameVector2";
 
     private Controller() {
         // Init here
@@ -470,15 +470,15 @@ public class Controller {
         }
     }
 
-//    public static void loadTheme() {
-//        try {
-//            if (theme == null) {
-//                theme = Resources.open("/themes/full_touch_theme.res");
-//            }
-//            UIManager.getInstance().setThemeProps(theme.getTheme(theme.getThemeResourceNames()[0]));
-//        } catch (Throwable ex) {
-//        }
-//    }
+    public static void loadTheme() {
+        try {
+            if (theme == null) {
+                theme = Resources.open("/themes/theme.res");
+            }
+            UIManager.getInstance().setThemeProps(theme.getTheme(theme.getThemeResourceNames()[0]));
+        } catch (Throwable ex) {
+        }
+    }
     class CategoryElementListener implements ElementListener {
 
         public void notifyElementSelected(CategoryBar bar, int selectedIndex) {

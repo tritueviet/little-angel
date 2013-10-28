@@ -16,6 +16,7 @@ public class Main extends MIDlet {
 
     public Main() {
         Display.init(this);
+        Controller.getInstance().loadTheme();
         Controller.getInstance().loadConfig();
         Controller.getInstance().loadVector();
     }
@@ -31,7 +32,6 @@ public class Main extends MIDlet {
     
     public void destroyApp(boolean unconditional) {
         Controller.getInstance().updateVector();
-        
         
         Controller.getInstance().updateConfig();
         Controller.getInstance().loadConfig();
