@@ -6,6 +6,7 @@ package Control;
  */
 
 import com.sun.lwuit.Display;
+import java.util.Date;
 import javax.microedition.midlet.*;
 
 /**

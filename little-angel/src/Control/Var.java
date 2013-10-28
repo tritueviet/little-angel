@@ -4,6 +4,7 @@
  */
 package Control;
 
+import java.util.Date;
 import java.util.Vector;
 
 /**
@@ -21,6 +22,8 @@ public class Var {
     public static String stringtc = "_:_";
     public static String back = "trở về";
     public static Vector listBe= new Vector();
+    public static Date date_mang_thai;
+    public static Date date_tiem_chung;
     
     
     public static final double[] FEMALE_W_STANDARD = {3.2, 4.2, 5.8, 7.3, 8.9,

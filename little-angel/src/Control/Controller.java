@@ -13,6 +13,8 @@ import com.nokia.mid.ui.IconCommand;
 import com.sun.lwuit.plaf.UIManager;
 import com.sun.lwuit.util.Resources;
 import event.Event;
+import javax.microedition.io.ConnectionNotFoundException;
+import javax.microedition.io.PushRegistry;
 import javax.microedition.lcdui.Alert;
 import javax.microedition.lcdui.AlertType;
 import javax.microedition.lcdui.Command;
@@ -198,7 +200,16 @@ public class Controller {
             view.show();
         }
     }
-
+    public  void registerTimerAlarm(long timePeriodToAutoStart) {	   
+	    try {
+	        PushRegistry.registerAlarm(main.getClass().getName(), timePeriodToAutoStart);
+	      
+	    } catch (ClassNotFoundException ex) {
+	               System.out.println(""+ex);
+	    } catch (ConnectionNotFoundException ex) {
+	               System.out.println(""+ex);
+	    }
+	}
     public void showReminder(String tittle) {
         if (categoryBar.getVisibility() == true) {
             categoryBar.setVisibility(false);

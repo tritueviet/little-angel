@@ -141,6 +141,7 @@ public class ViewTiemchung extends Form implements ActionListener {
             Controller.getInstance().showRemind();
         }
         if (ae.getSource() == save) {
+            Controller.getInstance().registerTimerAlarm(Var.date_mang_thai.getTime());
             Controller.getInstance().showKhamTiem(1);
         }
         if (ae.getSource() == bt) {

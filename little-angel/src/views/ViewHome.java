@@ -207,6 +207,7 @@ public class ViewHome extends Form implements ActionListener {
         baby.addComponent(sucKhoe);
         baby.addComponent(NhacNho);
         addComponent(baby);
+        baby.setScrollableY(true);
     }
 
     public void actionPerformed(ActionEvent ae) {
