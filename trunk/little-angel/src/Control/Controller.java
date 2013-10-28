@@ -37,8 +37,8 @@ public class Controller {
     public CategoryBar categoryBar;
     private Image icon;
     private Main main;
-    private String nameRecord = "wallrmslittleangl";
-    private String nameVector = "nameVector";
+    private String nameRecord = "wallrmslittle1";
+    private String nameVector = "nameVector1";
 
     private Controller() {
         // Init here
@@ -218,7 +218,13 @@ public class Controller {
         Display display = Display.getDisplay(main);
         display.setCurrent(view);
     }
-
+    public void showSetting(){
+        ViewSetting viewSetting= new ViewSetting();
+        viewSetting.show();
+    
+    }
+    
+    
     public void showViewDate() {
         if (categoryBar.getVisibility() == true) {
             categoryBar.setVisibility(false);
@@ -312,7 +318,7 @@ public class Controller {
         try {
             RecordStore rs = RecordStore.openRecordStore(nameRecord, true);
             byte[] data;
-            data = (Var.maBe + "").getBytes();
+            data = Var.maBe.getBytes();
             rs.addRecord(data, 0, data.length);
             data = Var.Babyname.getBytes();
             rs.addRecord(data, 0, data.length);
@@ -374,7 +380,7 @@ public class Controller {
             RecordStore rs = RecordStore.openRecordStore(nameRecord, true);
             RecordEnumeration re = rs.enumerateRecords(null, null, false);
             byte[] data;
-            data = (Var.maBe + "").getBytes();
+            data = Var.maBe.getBytes();
             rs.addRecord(data, 0, data.length);
 
             data = Var.Babyname.getBytes();
@@ -389,26 +395,19 @@ public class Controller {
             data = Var.SEX.getBytes();
             rs.addRecord(data, 0, data.length);
             data = Var.stringc2.getBytes();
-//                         if(data.length>0)
             rs.addRecord(data, 0, data.length);
             data = Var.stringc4.getBytes();
-//                         if(data.length>0)
             rs.addRecord(data, 0, data.length);
             data = Var.stringtc.getBytes();
-//                         if(data.length>0)
             rs.addRecord(data, 0, data.length);
 
-//                for (int i = 1; i <= rs.getNumRecords(); i++) {
-//                    System.out.println(new String(rs.getRecord(i)));
-//                    }
-
             rs.closeRecordStore();
-//            re.destroy();
         } catch (RecordStoreException ex) {
             System.out.println("loi doc rms");
             ex.printStackTrace();
         }
         System.out.println("update");
+        System.out.println("" + Var.maBe);
         System.out.println("" + Var.Babyname);
         System.out.println("" + Var.CANNANG);
         System.out.println("" + Var.CHIEUCAO);
@@ -426,34 +425,32 @@ public class Controller {
             }
             byte[] data;
             RecordEnumeration re = rs.enumerateRecords(null, null, false);
-//            while (re.hasNextElement()) {
             String s = new String(re.nextRecord());
-            Var.maBe = Integer.parseInt(s);
-
+            Var.maBe = s;
+            
             s = new String(re.nextRecord());
             Var.Babyname = s;
+            
             s = new String(re.nextRecord());
-//                System.out.println("" + s);
             Var.CANNANG = s;
+            
             s = new String(re.nextRecord());
-//                System.out.println("" + s);
             Var.CHIEUCAO = s;
+            
             s = new String(re.nextRecord());
-//                System.out.println("" + s);
             Var.THANG = s;
+            
             s = new String(re.nextRecord());
-//                System.out.println("" + s);
             Var.SEX = s;
+            
             s = new String(re.nextRecord());
-//                if(s!=null)
             Var.stringc2 = s;
+            
             s = new String(re.nextRecord());
-//                if(s!=null)
             Var.stringc4 = s;
+            
             s = new String(re.nextRecord());
-//                if(s!=null)
             Var.stringtc = s;
-//            }
             rs.closeRecordStore();
         } catch (RecordStoreException ex) {
             System.out.println("loi doc recod");
@@ -493,7 +490,7 @@ public class Controller {
                 } else if (selectedIndex == 2) {
                     showHotLine();
                 } else if (selectedIndex == 3) {
-                    // showOptionATM();
+                     showSetting();
                 } else {
                     try {
                         exit();

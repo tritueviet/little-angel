@@ -30,9 +30,13 @@ public class Main extends MIDlet {
     }
     
     public void destroyApp(boolean unconditional) {
+        Controller.getInstance().updateVector();
+        
+        
         Controller.getInstance().updateConfig();
         Controller.getInstance().loadConfig();
         Controller.getInstance().updateConfig();
+        
         notifyDestroyed();
     }
 }
