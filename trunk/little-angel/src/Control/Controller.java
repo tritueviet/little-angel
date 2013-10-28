@@ -36,6 +36,7 @@ public class Controller {
     private Image icon;
     private Main main;
     private String nameRecord = "wallrmslittleangl";
+    private String nameVector = "nameVector";
 
     private Controller() {
         // Init here
@@ -239,10 +240,69 @@ public class Controller {
         main.destroyApp(true);
     }
 
+    public void loadVector() {
+        try {
+            RecordStore rs = RecordStore.openRecordStore(nameVector, true);
+            if (rs.getNumRecords() == 0) {
+                System.out.println("creat");
+                createVector();
+                return;
+            }
+            byte[] data;
+            //Read language
+            RecordEnumeration re = rs.enumerateRecords(null, null, false);
+
+            /*for (int i = 0; i < rs.getNumRecords(); i++) {
+            data = rs.getRecord(i);
+            Var.vectorFavorite.addElement(new String(data));
+            }
+             * 
+             */
+            Var.listBe.removeAllElements();
+
+            while (re.hasNextElement()) {
+                String s = new String(re.nextRecord());
+                Var.listBe.addElement(s);
+            }
+            System.out.println("size list:" + Var.listBe.size());
+            rs.closeRecordStore();
+        } catch (RecordStoreException ex) {
+            System.out.println("loi doc recod");
+            ex.printStackTrace();
+        }
+    }
+
+    public void updateVector() {
+        try {
+            RecordStore rs = RecordStore.openRecordStore(nameVector, true);
+            RecordEnumeration re = rs.enumerateRecords(null, null, false);
+
+            int rid = 0;
+            while (re.hasNextElement()) {
+                rid = re.nextRecordId();
+                rs.deleteRecord(rid);
+            }
+
+            byte[] data;
+            for (int i = 0; i < Var.listBe.size(); i++) {
+                data = ((String) Var.listBe.elementAt(i)).getBytes();
+                //rs.setRecord(i, data, 0, data.length);
+                rs.addRecord(data, 0, data.length);
+            }
+            rs.closeRecordStore();
+
+        } catch (RecordStoreException ex) {
+            System.out.println("loi doc rms");
+            ex.printStackTrace();
+        }
+    }
+
     private void createRecord() {
         try {
             RecordStore rs = RecordStore.openRecordStore(nameRecord, true);
             byte[] data;
+            data = (Var.maBe + "").getBytes();
+            rs.addRecord(data, 0, data.length);
             data = Var.Babyname.getBytes();
             rs.addRecord(data, 0, data.length);
             data = Var.CANNANG.getBytes();
@@ -292,7 +352,7 @@ public class Controller {
             rms.closeRecordStore();
 
             rms = RecordStore.openRecordStore(nameRecord, true);
-             ree = rms.enumerateRecords(null, null, false);
+            ree = rms.enumerateRecords(null, null, false);
             rid = 0;
             while (ree.hasNextElement()) {
                 rid = ree.nextRecordId();
@@ -303,6 +363,8 @@ public class Controller {
             RecordStore rs = RecordStore.openRecordStore(nameRecord, true);
             RecordEnumeration re = rs.enumerateRecords(null, null, false);
             byte[] data;
+            data = (Var.maBe + "").getBytes();
+            rs.addRecord(data, 0, data.length);
 
             data = Var.Babyname.getBytes();
             rs.addRecord(data, 0, data.length);
@@ -355,7 +417,9 @@ public class Controller {
             RecordEnumeration re = rs.enumerateRecords(null, null, false);
 //            while (re.hasNextElement()) {
             String s = new String(re.nextRecord());
-//                System.out.println("" + s);
+            Var.maBe = Integer.parseInt(s);
+
+            s = new String(re.nextRecord());
             Var.Babyname = s;
             s = new String(re.nextRecord());
 //                System.out.println("" + s);
@@ -382,6 +446,18 @@ public class Controller {
             rs.closeRecordStore();
         } catch (RecordStoreException ex) {
             System.out.println("loi doc recod");
+            ex.printStackTrace();
+        }
+    }
+
+    private void createVector() {
+        try {
+            RecordStore rs = RecordStore.openRecordStore(nameVector, true);
+            byte[] data;
+//            data = (1 + "").getBytes();
+//            rs.setRecord(1, data, 0, data.length);
+            rs.closeRecordStore();
+        } catch (RecordStoreException ex) {
             ex.printStackTrace();
         }
     }

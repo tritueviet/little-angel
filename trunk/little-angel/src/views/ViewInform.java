@@ -46,8 +46,8 @@ public class ViewInform extends Form implements ActionListener {
 
         Container b2 = new Container(new BoxLayout(BoxLayout.X_AXIS));
         Label b2name = new Label("Tháng tuổi:");
-        
-        
+
+
         if (Var.THANG.equals("*")) {
             b2inform = new TextField("");
         } else {
@@ -83,14 +83,14 @@ public class ViewInform extends Form implements ActionListener {
 
         Container b5 = new Container(new BoxLayout(BoxLayout.X_AXIS));
         Label b5name = new Label("Giới tính:     ");
-        String[] str= {"nam","nữ"};
-        final ComboBox combo= new ComboBox(str);
+        String[] str = {"nam", "nữ"};
+        final ComboBox combo = new ComboBox(str);
         combo.setSelectedIndex(0);
-        
+
         combo.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent ae) {
-                Var.SEX=combo.getSelectCommandText();
+                Var.SEX = combo.getSelectCommandText();
             }
         });
         if (Var.SEX.equals("*")) {
@@ -136,11 +136,29 @@ public class ViewInform extends Form implements ActionListener {
                     || b4inform.getText().length() <= 0
                     || b5inform.getText().length() <= 0) {
             } else {
+
                 Var.THANG = b2inform.getText();
                 Var.CANNANG = b3inform.getText();
                 Var.CHIEUCAO = b4inform.getText();
                 Var.Babyname = b1inform.getText();
                 Var.SEX = b5inform.getText();
+
+                for (int i = 0; i < Var.listBe.size(); i = i + 6) {
+                    if (Var.maBe == Integer.parseInt(Var.listBe.elementAt(i).toString())) {
+                        for (int j = 0; j < 6; j++) {
+                            Var.listBe.removeElementAt(i);
+                        }
+                        Var.listBe.addElement(Var.maBe + "");
+                        Var.listBe.addElement(Var.Babyname);
+                        Var.listBe.addElement(Var.CANNANG);
+                        Var.listBe.addElement(Var.CHIEUCAO);
+                        Var.listBe.addElement(Var.THANG);
+                        Var.listBe.addElement(Var.SEX);
+                        
+                        break;
+                    }
+                }
+
                 Control.Controller.getInstance().showHome();
             }
         } else if (ae.getSource() == back) {

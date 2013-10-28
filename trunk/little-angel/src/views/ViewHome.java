@@ -28,10 +28,18 @@ public class ViewHome extends Form implements ActionListener {
     public Button[] bt = new Button[81];
     public Label[] lb = new Label[81];
     Button img1, sucKhoe, NhacNho;
-
+    
+    Command cmdAdd;
+    
     public ViewHome() {
-
-
+        try {
+            cmdAdd= new Command("thêm",Image.createImage("/images/add.png"));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        setDefaultCommand(cmdAdd);
+        addCommandListener(this);
+        
         this.setLayout(new BoxLayout(BoxLayout.X_AXIS));
         Font createSystemFont = Font.createSystemFont(Font.FACE_SYSTEM, Font.STYLE_PLAIN, Font.SIZE_SMALL);
         for (int i = 0; i < 35; i++) {
@@ -211,12 +219,32 @@ public class ViewHome extends Form implements ActionListener {
         if (ae.getSource() == img1) {
             Controller.getInstance().showInform();
         }
-        else
+        else  if(ae.getSource()==cmdAdd){
+            Var.listBe.addElement(Var.maBe+"");
+            Var.listBe.addElement(Var.Babyname);
+            Var.listBe.addElement(Var.CANNANG);
+            Var.listBe.addElement(Var.CHIEUCAO);
+            Var.listBe.addElement(Var.THANG);
+            Var.listBe.addElement(Var.SEX);
+            
+            Var.maBe++;
+            Var.Babyname="*";
+            Var.CANNANG="*";
+            Var.CHIEUCAO="*";
+            Var.THANG="*";
+            Var.SEX="*";
+            
+            Controller.getInstance().showHome();
+            
+        }
+         else   
         for (int i = 0; i < 81; i++) {
             if (ae.getSource() == bt[i] && i != 39) {
                 Controller.getInstance().showChoice(i);
             }
         }
+       
+        
         
     }
 }

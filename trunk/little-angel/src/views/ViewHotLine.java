@@ -10,33 +10,36 @@ import com.sun.lwuit.List;
 import com.sun.lwuit.events.ActionEvent;
 import com.sun.lwuit.events.ActionListener;
 import com.sun.lwuit.list.DefaultListModel;
+import java.util.Vector;
 
 /**
  *
  * @author FOX
  */
 public class ViewHotLine extends Form {
+
     public List list = new List();
     public Command cm[] = new Command[5];
-    public ViewHotLine(){
+
+    public ViewHotLine() {
         setTitle("hot line");
         list.setModel(new DefaultListModel());
-        for(int i= 0;i<5;i++){
-            cm[i] = new Command("sdt thu"+i);
+        for (int i = 0; i < 5; i++) {
+            cm[i] = new Command("sdt thu" + i);
             list.addItem(cm[i]);
         }
         addComponent(list);
-         list.addActionListener(new ActionListener() {
+        list.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent ae) {
 
                 int t = list.getSelectedIndex();
-                
+
 
 
             }
         });
         show();
-    
+
     }
 }
