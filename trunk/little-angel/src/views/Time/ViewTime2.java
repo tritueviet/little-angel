@@ -24,7 +24,8 @@ public class ViewTime2 extends Form implements CommandListener {
     public ViewTime2() {
         super("Time");
         datefield = new DateField("Set time:", DateField.DATE_TIME);
-        datefield.setDate(new Date());
+        if(Var.date_mang_thai != null)
+        datefield.setDate(Var.date_tiem_chung);
 
         back = new Command("Back", Command.BACK, 1);
         save = new Command("Save", Command.OK, 1);
@@ -41,6 +42,7 @@ public class ViewTime2 extends Form implements CommandListener {
         if (c == save) {
             Calendar Cal = Calendar.getInstance();
             Cal.setTime(datefield.getDate());
+            Var.date_tiem_chung = datefield.getDate();
             Var.stringtc = Cal.get(Cal.DAY_OF_MONTH) + "/" + Cal.get(Cal.MONTH) + "/"
              + Cal.get(Cal.YEAR) + " " + Cal.get(Cal.HOUR) + ":" + Cal.get(Cal.MINUTE);
             Controller.getInstance().showTiemchung();

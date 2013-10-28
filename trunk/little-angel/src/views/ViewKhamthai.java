@@ -30,6 +30,8 @@ public class ViewKhamthai extends Form implements ActionListener{
     Button c2date,c4date;
     public ViewKhamthai() {
         setLayout(new BorderLayout());
+//        Controller.getInstance().registerTimerAlarm( System.currentTimeMillis() + 15000);
+//        Controller.getInstance().registerTimerAlarm( System.currentTimeMillis() + 6000);
         Container north = new Container(new BoxLayout(BoxLayout.X_AXIS));
         try {
             Image img = Image.createImage("/images/baby.PNG");
@@ -95,6 +97,7 @@ public class ViewKhamthai extends Form implements ActionListener{
             Controller.getInstance().showRemind();
         }
         if(ae.getSource()==bt){
+            Controller.getInstance().registerTimerAlarm(Var.date_mang_thai.getTime());
             Controller.getInstance().showKhamTiem(0);
         }
         if(ae.getSource()==c2date){
