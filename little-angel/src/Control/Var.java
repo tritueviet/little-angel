@@ -4,6 +4,8 @@
  */
 package Control;
 
+import java.util.Vector;
+
 /**
  *
  * @author FOX
@@ -12,10 +14,15 @@ public class Var {
 
     public static String THANG = "*", CANNANG = "*", CHIEUCAO = "*", SEX = "*";
     public static String Babyname = "*";
+    public static int maBe = 0;
+    
     public static int choice = 0;
     public static String stringc2 = "_/_/_", stringc4 = "_:_";
     public static String stringtc = "_:_";
     public static String back = "trở về";
+    public static Vector listBe= new Vector();
+    
+    
     public static final double[] FEMALE_W_STANDARD = {3.2, 4.2, 5.8, 7.3, 8.9,
         10.2, 11.5, 13.9, 16.1, 18.2};
     public static final double[] FEMALE_MALNUTRITION = {2.4, 3.2, 4.5, 5.7, 7,
