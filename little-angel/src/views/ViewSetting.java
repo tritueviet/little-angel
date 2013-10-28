@@ -28,7 +28,7 @@ public class ViewSetting extends Form {
         boolean ok = false;
         for (int i = 1; i < Var.listBe.size(); i = i + 6) {
             item.addElement(Var.listBe.elementAt(i));
-            if (Var.maBe == Integer.parseInt(Var.listBe.elementAt(i - 1) + "")) {
+            if (Var.maBe.equals(Var.listBe.elementAt(i - 1) + "")) {
                 ok = true;
             }
             if (ok == false) {
@@ -42,7 +42,7 @@ public class ViewSetting extends Form {
             public void actionPerformed(ActionEvent ae) {
                 int selec= combo.getSelectedIndex()*6;
                 
-                Var.maBe=Integer.parseInt(Var.listBe.elementAt(selec)+"");
+                Var.maBe=Var.listBe.elementAt(selec)+"";
                 Var.Babyname = Var.listBe.elementAt(selec+1).toString();
                 Var.CANNANG = Var.listBe.elementAt(selec+2).toString();
                 Var.CHIEUCAO = Var.listBe.elementAt(selec+3).toString();
@@ -53,6 +53,6 @@ public class ViewSetting extends Form {
         setTitle("cài đặt");
         setLayout(new BoxLayout(BoxLayout.Y_AXIS));
         addComponent(new Label("chọn bé: "));
-
+        addComponent(combo);
     }
 }

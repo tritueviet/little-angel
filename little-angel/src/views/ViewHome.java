@@ -228,7 +228,7 @@ public class ViewHome extends Form implements ActionListener {
             Var.listBe.addElement(Var.THANG);
             Var.listBe.addElement(Var.SEX);
             
-            Var.maBe++;
+            Var.maBe=(Integer.parseInt(Var.maBe)+1)+"";
             Var.Babyname="*";
             Var.CANNANG="*";
             Var.CHIEUCAO="*";

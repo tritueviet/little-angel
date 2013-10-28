@@ -133,9 +133,14 @@ public class ViewInform extends Form implements ActionListener {
             if (b1inform.getText().length() <= 0
                     || b2inform.getText().length() <= 0
                     || b3inform.getText().length() <= 0
-                    || b4inform.getText().length() <= 0
-                    || b5inform.getText().length() <= 0) {
+                    || b4inform.getText().length() <= 0) {
             } else {
+
+                boolean edit = false;
+                if (!Var.Babyname.equals("*")) {
+                    edit = true;
+                }
+
 
                 Var.THANG = b2inform.getText();
                 Var.CANNANG = b3inform.getText();
@@ -143,23 +148,25 @@ public class ViewInform extends Form implements ActionListener {
                 Var.Babyname = b1inform.getText();
                 Var.SEX = b5inform.getText();
 
-                for (int i = 0; i < Var.listBe.size(); i = i + 6) {
-                    if (Var.maBe == Integer.parseInt(Var.listBe.elementAt(i).toString())) {
-                        for (int j = 0; j < 6; j++) {
-                            Var.listBe.removeElementAt(i);
+                if (edit) {
+                    for (int i = 0; i < Var.listBe.size(); i = i + 6) {
+                        if (Var.maBe.equals(Var.listBe.elementAt(i).toString())) {
+                            for (int j = 0; j < 6; j++) {
+                                Var.listBe.removeElementAt(i);
+                            }
+                            Var.listBe.addElement(Var.maBe + "");
+                            Var.listBe.addElement(Var.Babyname);
+                            Var.listBe.addElement(Var.CANNANG);
+                            Var.listBe.addElement(Var.CHIEUCAO);
+                            Var.listBe.addElement(Var.THANG);
+                            Var.listBe.addElement(Var.SEX);
+
+                            break;
                         }
-                        Var.listBe.addElement(Var.maBe + "");
-                        Var.listBe.addElement(Var.Babyname);
-                        Var.listBe.addElement(Var.CANNANG);
-                        Var.listBe.addElement(Var.CHIEUCAO);
-                        Var.listBe.addElement(Var.THANG);
-                        Var.listBe.addElement(Var.SEX);
-                        
-                        break;
                     }
                 }
-
                 Control.Controller.getInstance().showHome();
+                System.out.println("show home");
             }
         } else if (ae.getSource() == back) {
             Control.Controller.getInstance().showHome();
