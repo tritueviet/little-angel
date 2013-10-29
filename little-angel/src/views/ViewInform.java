@@ -46,8 +46,21 @@ public class ViewInform extends Form implements ActionListener {
 
         Container b2 = new Container(new BoxLayout(BoxLayout.X_AXIS));
         Label b2name = new Label("Tháng tuổi:");
+        String[] str = new String[65];
+        for (int i = 0; i < 65; i++) {
+            str[i]=i+"";
+        }
+        
+        final ComboBox combo2 = new ComboBox(str);
+        combo2.setSelectedIndex(0);
 
+        combo2.addActionListener(new ActionListener() {
 
+            public void actionPerformed(ActionEvent ae) {
+                Var.THANG = combo2.getSelectCommandText();
+            }
+        });
+        
         if (Var.THANG.equals("*")) {
             b2inform = new TextField("");
         } else {
@@ -55,7 +68,7 @@ public class ViewInform extends Form implements ActionListener {
         }
         b2inform.setConstraint(TextField.NUMERIC);
         b2.addComponent(b2name);
-        b2.addComponent(b2inform);
+        b2.addComponent(combo2);
 
 
         Container b3 = new Container(new BoxLayout(BoxLayout.X_AXIS));
@@ -83,8 +96,8 @@ public class ViewInform extends Form implements ActionListener {
 
         Container b5 = new Container(new BoxLayout(BoxLayout.X_AXIS));
         Label b5name = new Label("Giới tính:     ");
-        String[] str = {"nam", "nữ"};
-        final ComboBox combo = new ComboBox(str);
+        String[] str3 = {"nam", "nữ"};
+        final ComboBox combo = new ComboBox(str3);
         combo.setSelectedIndex(0);
 
         combo.addActionListener(new ActionListener() {
@@ -131,7 +144,6 @@ public class ViewInform extends Form implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == save) {
             if (b1inform.getText().length() <= 0
-                    || b2inform.getText().length() <= 0
                     || b3inform.getText().length() <= 0
                     || b4inform.getText().length() <= 0) {
             } else {
