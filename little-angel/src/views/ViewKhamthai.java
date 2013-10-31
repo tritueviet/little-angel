@@ -54,7 +54,7 @@ public class ViewKhamthai extends Form implements ActionListener{
         Container center1 = new Container(new GridLayout(3,2));
         
         Label c2name = new Label("ngay co thai");
-        c2date = new Button(Var.stringc2);
+        c2date = new Button(Var.stringc2 );
         c2date.addActionListener(this);
         center1.addComponent(c2name);
         center1.addComponent(c2date);
@@ -70,7 +70,7 @@ public class ViewKhamthai extends Form implements ActionListener{
         center1.addComponent(c3date);
         
         Label c4name = new Label("thoi gian");
-        c4date = new Button(Var.stringc4);
+        c4date = new Button("19:00");
         c4date.addActionListener(this);
         center1.addComponent(c4name);
         center1.addComponent(c4date);
@@ -97,14 +97,19 @@ public class ViewKhamthai extends Form implements ActionListener{
             Controller.getInstance().showRemind();
         }
         if(ae.getSource()==bt){
-            Controller.getInstance().registerTimerAlarm(Var.date_mang_thai.getTime());
+            if(Var.date_mang_thai != null)
+            Controller.getInstance().registerTimerAlarm(Var.date_mang_thai.getTime()+90*86400*1000);
+            Controller.getInstance().registerTimerAlarm(Var.date_mang_thai.getTime()+160*86400*1000);
+            Controller.getInstance().registerTimerAlarm(Var.date_mang_thai.getTime()+260*86400*1000);
+            Controller.getInstance().registerTimerAlarm(Var.date_mang_thai.getTime()+280*86400*1000);
+            
             Controller.getInstance().showKhamTiem(0);
         }
         if(ae.getSource()==c2date){
             Controller.getInstance().showViewDate();
         }
         if(ae.getSource()==c4date){
-            Controller.getInstance().showViewTime();
+            //Controller.getInstance().showViewTime();
         }
     }
 }

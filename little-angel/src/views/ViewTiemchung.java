@@ -81,7 +81,7 @@ public class ViewTiemchung extends Form implements ActionListener {
         Container south1 = new Container(new GridLayout(2, 2));
         
         Label la = new Label("thoi gian");
-        bt = new Button(Var.stringtc);
+        bt = new Button("19:00");
         bt.addActionListener(this);
         south1.addComponent(la);
         south1.addComponent(bt);
@@ -141,11 +141,14 @@ public class ViewTiemchung extends Form implements ActionListener {
             Controller.getInstance().showRemind();
         }
         if (ae.getSource() == save) {
-            Controller.getInstance().registerTimerAlarm(Var.date_mang_thai.getTime());
+            Controller.getInstance().registerTimerAlarm(Var.date_tiem_chung.getTime()+90*86400*1000);
+            Controller.getInstance().registerTimerAlarm(Var.date_tiem_chung.getTime()+160*86400*1000);
+            Controller.getInstance().registerTimerAlarm(Var.date_tiem_chung.getTime()+260*86400*1000);
+            Controller.getInstance().registerTimerAlarm(Var.date_tiem_chung.getTime()+280*86400*1000);
             Controller.getInstance().showKhamTiem(1);
         }
         if (ae.getSource() == bt) {
-            Controller.getInstance().showViewTime2();            
+           // Controller.getInstance().showViewTime2();            
         }
         
     }

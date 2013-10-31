@@ -20,8 +20,10 @@ public class ViewReminder extends Form implements CommandListener {
     Command save;
     Command back;
     DateField datefield;
-    public ViewReminder(final String tittle) {
+    String tittle;
+    public ViewReminder(String tittle) {
         super("Reminder");
+        this.tittle = tittle;
         TextField tf = new TextField("Remind about",tittle , 10, TextField.ANY);
         append(tf);
         datefield = new DateField("Set time:", DateField.DATE_TIME);
@@ -42,10 +44,12 @@ public class ViewReminder extends Form implements CommandListener {
            Controller.getInstance().showChamBe();
        }
        if(c==save){
-//           Calendar Cal = Calendar.getInstance();
-//           Cal.setTime(datefield.getDate());
-//           Var.stringc2 = Cal.get(Cal.DATE)+"/"+Cal.get(Cal.MONTH)+"/"+Cal.get(Cal.YEAR);
-//           Controller.getInstance().showKhamthai();
+            
+           Calendar Cal = Calendar.getInstance();
+           Cal.setTime(datefield.getDate());
+           String c2 = Cal.get(Cal.DATE)+"-"+Cal.get(Cal.MONTH)+"-"+Cal.get(Cal.YEAR) +
+                   "   "+Cal.get(Cal.HOUR)+":"+Cal.get(Cal.MINUTE);
+           Controller.getInstance().showResult(tittle, c2);
        }
     }
 }
