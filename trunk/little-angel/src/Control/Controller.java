@@ -186,6 +186,13 @@ public class Controller {
         ViewChamBe view = new ViewChamBe();
         view.show();
     }
+     public void showResult(String namex2,String namex4) {
+        if (categoryBar.getVisibility() == true) {
+            categoryBar.setVisibility(false);
+        }
+        ViewResult view = new ViewResult(namex2 ,namex4);
+        view.show();
+    }
 
     public void showSucKhoe() {
 

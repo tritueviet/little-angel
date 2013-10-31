@@ -54,13 +54,13 @@ public class ViewKhamTiem extends Form implements ActionListener {
         
         for (int i = 0; i < Var.dd1.length; i++) {
             if (Var.dd1[i] == 1) {
-                Renderer c1 = new Renderer(Var.v1[i], Var.stringtc);
+                Renderer c1 = new Renderer(Var.v1[i], "1/11/2013");
                 tiem.addComponent(c1);
             }
         }
         for (int i = 0; i < Var.dd2.length; i++) {
             if (Var.dd2[i] == 1) {
-                Renderer c1 = new Renderer(Var.v2[i], Var.stringtc);
+                Renderer c1 = new Renderer(Var.v2[i], "1/11/2013");
                 tiem.addComponent(c1);
             }
         }

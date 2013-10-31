@@ -24,6 +24,8 @@ public class Var {
     public static Vector listBe= new Vector();
     public static Date date_mang_thai;
     public static Date date_tiem_chung;
+    public static Date date_;
+    
     
     
     public static final double[] FEMALE_W_STANDARD = {3.2, 4.2, 5.8, 7.3, 8.9,

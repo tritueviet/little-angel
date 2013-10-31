@@ -24,9 +24,7 @@ public class ViewTime2 extends Form implements CommandListener {
     public ViewTime2() {
         super("Time");
         datefield = new DateField("Set time:", DateField.DATE_TIME);
-        if(Var.date_mang_thai != null)
-        datefield.setDate(Var.date_tiem_chung);
-
+        datefield.setDate(Var.date_);
         back = new Command("Back", Command.BACK, 1);
         save = new Command("Save", Command.OK, 1);
         this.append(datefield);
@@ -40,11 +38,18 @@ public class ViewTime2 extends Form implements CommandListener {
             Controller.getInstance().showTiemchung();
         }
         if (c == save) {
-            Calendar Cal = Calendar.getInstance();
-            Cal.setTime(datefield.getDate());
+           Calendar Cal = Calendar.getInstance(); 
+//           //Cal.setTime(datefield.getDate());
+//           String s  = datefield.getDate().toString();
+//           String hour = ""+s.charAt(11) + s.charAt(12);
+//           System.out.println(""+hour);
+//           String minute = ""+s.charAt(14) + s.charAt(15);
+//           System.out.println(""+minute);
+//           System.out.println(""+Cal.toString());
+//           Cal.set(Calendar.HOUR, Integer.parseInt(hour));
+//           Cal.set(Calendar.MINUTE, Integer.parseInt(minute));
+            Var.stringtc = ""+Cal.get(Cal.HOUR)+":"+Cal.get(Cal.MINUTE);
             Var.date_tiem_chung = datefield.getDate();
-            Var.stringtc = Cal.get(Cal.DAY_OF_MONTH) + "/" + Cal.get(Cal.MONTH) + "/"
-             + Cal.get(Cal.YEAR) + " " + Cal.get(Cal.HOUR) + ":" + Cal.get(Cal.MINUTE);
             Controller.getInstance().showTiemchung();
         }
     }
