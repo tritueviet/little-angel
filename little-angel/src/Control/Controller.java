@@ -10,6 +10,9 @@ import views.Time.ViewTime2;
 import com.nokia.mid.ui.CategoryBar;
 import com.nokia.mid.ui.ElementListener;
 import com.nokia.mid.ui.IconCommand;
+import com.sun.lwuit.animations.CommonTransitions;
+import com.sun.lwuit.animations.Transition;
+import com.sun.lwuit.animations.Transition3D;
 import com.sun.lwuit.plaf.UIManager;
 import com.sun.lwuit.util.Resources;
 import event.Event;
@@ -110,14 +113,21 @@ public class Controller {
         }
         readData read = new readData();
         ViewBoSung viewBoSung = new ViewBoSung(k, read.read(k));
+        viewBoSung.setTransitionOutAnimator(CommonTransitions.createSlide(
+                CommonTransitions.SLIDE_HORIZONTAL, true, 1000));
+        
         viewBoSung.show();
     }
 
     public void showHome() {
+        //Transition3D tr = Transition3D.createCube(300, true);
+        
         if (categoryBar.getVisibility() == false) {
             categoryBar.setVisibility(true);
         }
         ViewHome viewHome = new ViewHome();
+        viewHome.setTransitionOutAnimator(CommonTransitions.createSlide(
+                CommonTransitions.SLIDE_HORIZONTAL, true, 1000));
         //javax.microedition.lcdui.Display.getDisplay(main).setCurrent(viewHome);
         viewHome.show();
 
@@ -125,6 +135,8 @@ public class Controller {
 
     public void showHotLine() {
         ViewHotLine viewhot = new ViewHotLine();
+        viewhot.setTransitionOutAnimator(CommonTransitions.createSlide(
+                CommonTransitions.SLIDE_HORIZONTAL, true, 1000));
         viewhot.show();
 
     }
@@ -134,6 +146,9 @@ public class Controller {
             categoryBar.setVisibility(false);
         }
         ViewChoice viewchoice = new ViewChoice(i);
+        viewchoice.setTransitionOutAnimator(CommonTransitions.createSlide(
+                CommonTransitions.SLIDE_HORIZONTAL, true, 1000));
+        
         //javax.microedition.lcdui.Display.getDisplay(main).setCurrent(viewHome);
         viewchoice.show();
 
@@ -144,6 +159,8 @@ public class Controller {
             categoryBar.setVisibility(false);
         }
         ViewInform view = new ViewInform();
+        view.setTransitionOutAnimator(CommonTransitions.createSlide(
+                CommonTransitions.SLIDE_HORIZONTAL, true, 1000));
         view.show();
     }
 
@@ -152,6 +169,8 @@ public class Controller {
             categoryBar.setVisibility(false);
         }
         ViewRemind view = new ViewRemind();
+        view.setTransitionOutAnimator(CommonTransitions.createSlide(
+                CommonTransitions.SLIDE_HORIZONTAL, true, 1000));
         view.show();
     }
 
@@ -160,6 +179,8 @@ public class Controller {
             categoryBar.setVisibility(false);
         }
         ViewKhamthai view = new ViewKhamthai();
+        view.setTransitionOutAnimator(CommonTransitions.createSlide(
+                CommonTransitions.SLIDE_HORIZONTAL, true, 1000));
         view.show();
     }
 
@@ -168,6 +189,8 @@ public class Controller {
             categoryBar.setVisibility(false);
         }
         ViewTiemchung view = new ViewTiemchung();
+        view.setTransitionOutAnimator(CommonTransitions.createSlide(
+                CommonTransitions.SLIDE_HORIZONTAL, true, 1000));
         view.show();
     }
 
@@ -176,6 +199,8 @@ public class Controller {
             categoryBar.setVisibility(false);
         }
         ViewKhamTiem view = new ViewKhamTiem(index);
+        view.setTransitionOutAnimator(CommonTransitions.createSlide(
+                CommonTransitions.SLIDE_HORIZONTAL, true, 1000));
         view.show();
     }
 
@@ -184,13 +209,18 @@ public class Controller {
             categoryBar.setVisibility(false);
         }
         ViewChamBe view = new ViewChamBe();
+        view.setTransitionOutAnimator(CommonTransitions.createSlide(
+                CommonTransitions.SLIDE_HORIZONTAL, true, 1000));
         view.show();
     }
-     public void showResult(String namex2,String namex4) {
+
+    public void showResult(String namex2, String namex4) {
         if (categoryBar.getVisibility() == true) {
             categoryBar.setVisibility(false);
         }
-        ViewResult view = new ViewResult(namex2 ,namex4);
+        ViewResult view = new ViewResult(namex2, namex4);
+        view.setTransitionOutAnimator(CommonTransitions.createSlide(
+                CommonTransitions.SLIDE_HORIZONTAL, true, 1000));
         view.show();
     }
 
@@ -204,34 +234,41 @@ public class Controller {
                 categoryBar.setVisibility(false);
             }
             ViewSucKhoe view = new ViewSucKhoe();
+            view.setTransitionOutAnimator(CommonTransitions.createSlide(
+                CommonTransitions.SLIDE_HORIZONTAL, true, 1000));
             view.show();
         }
     }
-    public  void registerTimerAlarm(long timePeriodToAutoStart) {	   
-	    try {
-	        PushRegistry.registerAlarm(main.getClass().getName(), timePeriodToAutoStart);
-	      
-	    } catch (ClassNotFoundException ex) {
-	               System.out.println(""+ex);
-	    } catch (ConnectionNotFoundException ex) {
-	               System.out.println(""+ex);
-	    }
-	}
+
+    public void registerTimerAlarm(long timePeriodToAutoStart) {
+        try {
+            PushRegistry.registerAlarm(main.getClass().getName(), timePeriodToAutoStart);
+
+        } catch (ClassNotFoundException ex) {
+            System.out.println("" + ex);
+        } catch (ConnectionNotFoundException ex) {
+            System.out.println("" + ex);
+        }
+    }
+
     public void showReminder(String tittle) {
         if (categoryBar.getVisibility() == true) {
             categoryBar.setVisibility(false);
         }
         ViewReminder view = new ViewReminder(tittle);
+        
         Display display = Display.getDisplay(main);
         display.setCurrent(view);
     }
-    public void showSetting(){
-        ViewSetting viewSetting= new ViewSetting();
+
+    public void showSetting() {
+        ViewSetting viewSetting = new ViewSetting();
+        viewSetting.setTransitionOutAnimator(CommonTransitions.createSlide(
+                CommonTransitions.SLIDE_HORIZONTAL, true, 1000));
         viewSetting.show();
-    
+
     }
-    
-    
+
     public void showViewDate() {
         if (categoryBar.getVisibility() == true) {
             categoryBar.setVisibility(false);
@@ -341,7 +378,7 @@ public class Controller {
             rs.addRecord(data, 0, data.length);
             data = Var.stringc2.getBytes();
             rs.addRecord(data, 0, data.length);
-            
+
             rs.closeRecordStore();
         } catch (RecordStoreException ex) {
             ex.printStackTrace();
@@ -360,30 +397,30 @@ public class Controller {
                 return;
             }
             byte[] data;
-            
+
             String s = new String(re.nextRecord());
             Var.maBe = s;
-            
+
             s = new String(re.nextRecord());
             Var.Babyname = s;
-            
+
             s = new String(re.nextRecord());
             Var.CANNANG = s;
-            
+
             s = new String(re.nextRecord());
             Var.CHIEUCAO = s;
-            
+
             s = new String(re.nextRecord());
             Var.THANG = s;
-            
+
             s = new String(re.nextRecord());
             Var.SEX = s;
-            
+
             s = new String(re.nextRecord());
             Var.stringc2 = s;
-            
-           
-            
+
+
+
             rs.closeRecordStore();
         } catch (RecordStoreException ex) {
             System.out.println("loi doc recod");
@@ -394,7 +431,7 @@ public class Controller {
         System.out.println("" + Var.CHIEUCAO);
         System.out.println("" + Var.THANG);
         System.out.println("" + Var.SEX);
-       
+
     }
 
     public void updateConfig() {
@@ -437,7 +474,7 @@ public class Controller {
             rs.addRecord(data, 0, data.length);
             data = Var.stringc2.getBytes();
             rs.addRecord(data, 0, data.length);
-            
+
 
             rs.closeRecordStore();
         } catch (RecordStoreException ex) {
@@ -475,6 +512,7 @@ public class Controller {
         } catch (Throwable ex) {
         }
     }
+
     class CategoryElementListener implements ElementListener {
 
         public void notifyElementSelected(CategoryBar bar, int selectedIndex) {
@@ -486,7 +524,7 @@ public class Controller {
                 } else if (selectedIndex == 2) {
                     showHotLine();
                 } else if (selectedIndex == 3) {
-                     showSetting();
+                    showSetting();
                 } else {
                     try {
                         exit();
