@@ -55,6 +55,40 @@ public class ViewKhamthai extends Form implements ActionListener{
         
         Label c2name = new Label("ngay co thai");
         c2date = new Button(Var.stringc2 );
+        if(Var.stringc2.equals("_/_/_")==false){
+            String x1 = Var.stringc2;
+            String x2 = "";
+            String x3 = "";
+            String x4 = "";
+            int i = 0;
+            while(i<x1.length()){
+                if(x1.charAt(i)!= '/'){ x2+=x1.charAt(i);i++;}
+                else break;
+            }
+            System.out.println(""+x2);
+            i++;
+            while(i<x1.length()){
+                if(x1.charAt(i)!= '/'){ x3+=x1.charAt(i);i++;}
+                else break;
+            }
+            i++;
+            System.out.println(""+x3);
+            while(i<x1.length()){
+                if(x1.charAt(i)!= '/'){ x4+=x1.charAt(i);i++;}
+                else break;
+            }
+            System.out.println(""+x4);
+            java.util.Calendar Ca = java.util.Calendar.getInstance();
+            Ca.set(java.util.Calendar.DAY_OF_MONTH,Integer.parseInt(x2));
+            Ca.set(java.util.Calendar.MONTH,Integer.parseInt(x3));
+            Ca.set(java.util.Calendar.YEAR,Integer.parseInt(x4));
+            Var.date_ = Ca.getTime();
+           Ca.set(java.util.Calendar.HOUR,19);
+           Ca.set(java.util.Calendar.MINUTE,0);
+           Var.date_mang_thai = Ca.getTime();
+           Var.date_tiem_chung = Ca.getTime();
+           
+        }
         c2date.addActionListener(this);
         center1.addComponent(c2name);
         center1.addComponent(c2date);
@@ -97,11 +131,12 @@ public class ViewKhamthai extends Form implements ActionListener{
             Controller.getInstance().showRemind();
         }
         if(ae.getSource()==bt){
-            if(Var.date_mang_thai != null)
+            if(Var.date_mang_thai != null){
             Controller.getInstance().registerTimerAlarm(Var.date_mang_thai.getTime()+90*86400*1000);
             Controller.getInstance().registerTimerAlarm(Var.date_mang_thai.getTime()+160*86400*1000);
             Controller.getInstance().registerTimerAlarm(Var.date_mang_thai.getTime()+260*86400*1000);
             Controller.getInstance().registerTimerAlarm(Var.date_mang_thai.getTime()+280*86400*1000);
+            }
             
             Controller.getInstance().showKhamTiem(0);
         }
