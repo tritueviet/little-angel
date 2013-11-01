@@ -268,6 +268,14 @@ public class Controller {
         viewSetting.show();
 
     }
+    public void viewTXT(int selectedIndex) {
+        readData reDa= new readData();
+        
+        ViewTXT view= new ViewTXT( reDa.readDataDinhDuong(selectedIndex), Var.thongTinBoSung[selectedIndex]);
+        view.setTransitionOutAnimator(CommonTransitions.createSlide(
+                CommonTransitions.SLIDE_HORIZONTAL, true, 1000));
+        view.show();
+    }
 
     public void showViewDate() {
         if (categoryBar.getVisibility() == true) {
@@ -286,7 +294,13 @@ public class Controller {
         Display display = Display.getDisplay(main);
         display.setCurrent(view);
     }
-
+    public void viewDinhDuong() {
+        ViewDinhDuong view= new ViewDinhDuong();
+        view.setTransitionOutAnimator(CommonTransitions.createSlide(
+                CommonTransitions.SLIDE_HORIZONTAL, true, 1000));
+        view.show();
+        
+    }
     public void showViewTime2() {
         if (categoryBar.getVisibility() == true) {
             categoryBar.setVisibility(false);
@@ -512,6 +526,9 @@ public class Controller {
         } catch (Throwable ex) {
         }
     }
+
+    
+    
 
     class CategoryElementListener implements ElementListener {
 

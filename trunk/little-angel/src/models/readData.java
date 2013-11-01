@@ -37,4 +37,29 @@ public class readData {
             return s;
         
     }
+    
+    public String readDataDinhDuong(int i){
+        
+        DataInputStream da=null;
+        try{
+        da = new DataInputStream(this.getClass().getResourceAsStream("/thongtin"+i+".dat"));
+        }catch(Exception e){
+            System.out.println(" not found");
+        }
+        String s=null;
+        try {
+            s = da.readUTF();
+//            System.out.println(""+s);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        try {
+            da.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+            return s;
+        
+    }
+    
 }

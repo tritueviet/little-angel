@@ -129,6 +129,9 @@ public class ViewHome extends Form implements ActionListener {
         con.setScrollableY(true);
         con.addComponent(tablename);
         con.addComponent(table);
+        con.getStyle().setMargin(5, 5, 7, 7);
+        
+        
         addComponent(con);
         setScrollableY(false);
         Container baby = new Container(new BoxLayout(BoxLayout.Y_AXIS));
