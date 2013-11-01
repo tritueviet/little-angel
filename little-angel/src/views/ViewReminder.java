@@ -44,7 +44,7 @@ public class ViewReminder extends Form implements CommandListener {
            Controller.getInstance().showChamBe();
        }
        if(c==save){
-            
+           Controller.getInstance().registerTimerAlarm(datefield.getDate().getTime());
            Calendar Cal = Calendar.getInstance();
            Cal.setTime(datefield.getDate());
            String c2 = Cal.get(Cal.DATE)+"-"+Cal.get(Cal.MONTH)+"-"+Cal.get(Cal.YEAR) +

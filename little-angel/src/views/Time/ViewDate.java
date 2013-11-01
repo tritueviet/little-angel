@@ -48,7 +48,8 @@ public class ViewDate extends Form implements CommandListener {
            Var.date_mang_thai = Ca.getTime();
            Var.date_tiem_chung = Ca.getTime();
            
-           Var.stringc2 = Cal.get(Cal.DAY_OF_MONTH)+"/"+Cal.get(Cal.MONTH)+"/" + Cal.get(Cal.YEAR);
+           Var.stringc2 = Cal.get(Cal.DAY_OF_MONTH)+"/"+(Cal.get(Cal.MONTH)+1)+"/" + Cal.get(Cal.YEAR);
+           System.out.println(""+Var.stringc2);
            Controller.getInstance().showKhamthai();
        }
     }

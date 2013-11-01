@@ -37,7 +37,7 @@ public class Controller {
     public CategoryBar categoryBar;
     private Image icon;
     private Main main;
-    private String nameRecord = "wallrmslittle2";
+    private String nameRecord = "wallrmslittle10";
     private String nameVector = "nameVector2";
 
     private Controller() {
@@ -269,6 +269,7 @@ public class Controller {
             RecordStore rs = RecordStore.openRecordStore(nameVector, true);
             if (rs.getNumRecords() == 0) {
                 System.out.println("creat");
+                rs.closeRecordStore();
                 createVector();
                 return;
             }
@@ -324,6 +325,7 @@ public class Controller {
     private void createRecord() {
         try {
             RecordStore rs = RecordStore.openRecordStore(nameRecord, true);
+            RecordEnumeration re = rs.enumerateRecords(null, null, false);
             byte[] data;
             data = Var.maBe.getBytes();
             rs.addRecord(data, 0, data.length);
@@ -338,13 +340,10 @@ public class Controller {
             data = Var.SEX.getBytes();
             rs.addRecord(data, 0, data.length);
             data = Var.stringc2.getBytes();
-//                         if(data.length>0)
             rs.addRecord(data, 0, data.length);
             data = Var.stringc4.getBytes();
-//                         if(data.length>0)
             rs.addRecord(data, 0, data.length);
             data = Var.stringtc.getBytes();
-//                         if(data.length>0)
             rs.addRecord(data, 0, data.length);
             rs.closeRecordStore();
         } catch (RecordStoreException ex) {
@@ -353,14 +352,56 @@ public class Controller {
     }
 
     public void loadConfig() {
-        rs1();
+        try {
+            RecordStore rs = RecordStore.openRecordStore(nameRecord, true);
+            RecordEnumeration re = rs.enumerateRecords(null, null, false);
+            if (rs.getNumRecords() == 0) {
+                rs.closeRecordStore();
+                re.destroy();
+                createRecord();
+                System.out.println("creat");
+                return;
+            }
+            byte[] data;
+            
+            String s = new String(re.nextRecord());
+            Var.maBe = s;
+            
+            s = new String(re.nextRecord());
+            Var.Babyname = s;
+            
+            s = new String(re.nextRecord());
+            Var.CANNANG = s;
+            
+            s = new String(re.nextRecord());
+            Var.CHIEUCAO = s;
+            
+            s = new String(re.nextRecord());
+            Var.THANG = s;
+            
+            s = new String(re.nextRecord());
+            Var.SEX = s;
+            
+            s = new String(re.nextRecord());
+            Var.stringc2 = s;
+            
+            s = new String(re.nextRecord());
+            Var.stringc4 = s;
+            
+            s = new String(re.nextRecord());
+            Var.stringtc = s;
+            
+            rs.closeRecordStore();
+        } catch (RecordStoreException ex) {
+            System.out.println("loi doc recod");
+            ex.printStackTrace();
+        }
         System.out.println("" + Var.Babyname);
         System.out.println("" + Var.CANNANG);
         System.out.println("" + Var.CHIEUCAO);
         System.out.println("" + Var.THANG);
         System.out.println("" + Var.SEX);
-        //rs2();
-        //rs3();
+       
     }
 
     public void updateConfig() {
@@ -422,52 +463,10 @@ public class Controller {
         System.out.println("" + Var.SEX);
     }
 
-    public void rs1() {
-        try {
-            RecordStore rs = RecordStore.openRecordStore(nameRecord, true);
-            if (rs.getNumRecords() == 0) {
-                createRecord();
-                System.out.println("creat");
-                return;
-            }
-            byte[] data;
-            RecordEnumeration re = rs.enumerateRecords(null, null, false);
-            String s = new String(re.nextRecord());
-            Var.maBe = s;
-            
-            s = new String(re.nextRecord());
-            Var.Babyname = s;
-            
-            s = new String(re.nextRecord());
-            Var.CANNANG = s;
-            
-            s = new String(re.nextRecord());
-            Var.CHIEUCAO = s;
-            
-            s = new String(re.nextRecord());
-            Var.THANG = s;
-            
-            s = new String(re.nextRecord());
-            Var.SEX = s;
-            
-            s = new String(re.nextRecord());
-            Var.stringc2 = s;
-            
-            s = new String(re.nextRecord());
-            Var.stringc4 = s;
-            
-            s = new String(re.nextRecord());
-            Var.stringtc = s;
-            rs.closeRecordStore();
-        } catch (RecordStoreException ex) {
-            System.out.println("loi doc recod");
-            ex.printStackTrace();
-        }
-    }
-
     private void createVector() {
         try {
             RecordStore rs = RecordStore.openRecordStore(nameVector, true);
+            RecordEnumeration re = rs.enumerateRecords(null, null, false);
             byte[] data;
 //            data = (1 + "").getBytes();
 //            rs.setRecord(1, data, 0, data.length);
