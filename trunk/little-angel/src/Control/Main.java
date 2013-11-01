@@ -16,9 +16,10 @@ public class Main extends MIDlet {
 
     public Main() {
         Display.init(this);
-        Controller.getInstance().loadTheme();
         Controller.getInstance().loadConfig();
+//        Controller.getInstance().loadConfig();
         Controller.getInstance().loadVector();
+        Controller.getInstance().loadTheme();
     }
 
     
