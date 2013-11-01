@@ -28,6 +28,8 @@ public class ViewInform extends Form implements ActionListener {
     TextField b3inform;
     TextField b4inform;
     TextField b5inform;
+    private final ComboBox combo2;
+    private final ComboBox combo;
 
     public ViewInform() {
         setLayout(new BorderLayout());
@@ -51,15 +53,10 @@ public class ViewInform extends Form implements ActionListener {
             str[i]=i+"";
         }
         
-        final ComboBox combo2 = new ComboBox(str);
+        combo2 = new ComboBox(str);
         combo2.setSelectedIndex(0);
 
-        combo2.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent ae) {
-                Var.THANG = combo2.getSelectCommandText();
-            }
-        });
+        combo2.addActionListener(this);
         
         if (Var.THANG.equals("*")) {
             b2inform = new TextField("");
@@ -97,15 +94,10 @@ public class ViewInform extends Form implements ActionListener {
         Container b5 = new Container(new BoxLayout(BoxLayout.X_AXIS));
         Label b5name = new Label("Giới tính:     ");
         String[] str3 = {"nam", "nữ"};
-        final ComboBox combo = new ComboBox(str3);
+        combo = new ComboBox(str3);
         combo.setSelectedIndex(0);
 
-        combo.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent ae) {
-                Var.SEX = combo.getSelectCommandText();
-            }
-        });
+        combo.addActionListener(this);
         if (Var.SEX.equals("*")) {
             b5inform = new TextField("");
         } else {
@@ -154,12 +146,16 @@ public class ViewInform extends Form implements ActionListener {
                 }
 
 
-                Var.THANG = b2inform.getText();
+                Var.THANG = combo2.getSelectedItem().toString();
                 Var.CANNANG = b3inform.getText();
                 Var.CHIEUCAO = b4inform.getText();
                 Var.Babyname = b1inform.getText();
-                Var.SEX = b5inform.getText();
+                Var.SEX = combo.getSelectedItem().toString();
 
+//                System.out.println(""+combo2.getSelectCommandText());
+//                System.out.println(""+combo2.getName());
+                System.out.println(""+combo2.getSelectedItem().toString());
+                
                 if (edit) {
                     for (int i = 0; i < Var.listBe.size(); i = i + 6) {
                         if (Var.maBe.equals(Var.listBe.elementAt(i).toString())) {
