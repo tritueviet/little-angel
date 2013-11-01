@@ -37,7 +37,7 @@ public class Controller {
     public CategoryBar categoryBar;
     private Image icon;
     private Main main;
-    private String nameRecord = "wallrmslittle10";
+    private String nameRecord = "recoddrddds";
     private String nameVector = "nameVector2";
 
     private Controller() {
@@ -341,10 +341,7 @@ public class Controller {
             rs.addRecord(data, 0, data.length);
             data = Var.stringc2.getBytes();
             rs.addRecord(data, 0, data.length);
-            data = Var.stringc4.getBytes();
-            rs.addRecord(data, 0, data.length);
-            data = Var.stringtc.getBytes();
-            rs.addRecord(data, 0, data.length);
+            
             rs.closeRecordStore();
         } catch (RecordStoreException ex) {
             ex.printStackTrace();
@@ -385,11 +382,7 @@ public class Controller {
             s = new String(re.nextRecord());
             Var.stringc2 = s;
             
-            s = new String(re.nextRecord());
-            Var.stringc4 = s;
-            
-            s = new String(re.nextRecord());
-            Var.stringtc = s;
+           
             
             rs.closeRecordStore();
         } catch (RecordStoreException ex) {
@@ -444,10 +437,7 @@ public class Controller {
             rs.addRecord(data, 0, data.length);
             data = Var.stringc2.getBytes();
             rs.addRecord(data, 0, data.length);
-            data = Var.stringc4.getBytes();
-            rs.addRecord(data, 0, data.length);
-            data = Var.stringtc.getBytes();
-            rs.addRecord(data, 0, data.length);
+            
 
             rs.closeRecordStore();
         } catch (RecordStoreException ex) {
