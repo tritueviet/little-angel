@@ -24,7 +24,7 @@ public class ViewReminder extends Form implements CommandListener {
     public ViewReminder(String tittle) {
         super("Reminder");
         this.tittle = tittle;
-        TextField tf = new TextField("Remind about",tittle , 10, TextField.ANY);
+        TextField tf = new TextField("Remind about",tittle , 15, TextField.ANY);
         append(tf);
         datefield = new DateField("Set time:", DateField.DATE_TIME);
         datefield.setDate(new Date());
