@@ -27,6 +27,7 @@ public class ViewChoice extends Form implements ActionListener {
     public ViewChoice(final int vt) {
         setLayout(new BorderLayout());
         this.vt=vt;
+        Var.viTriChoice=vt;
         Container north = new Container(new BoxLayout(BoxLayout.X_AXIS));
         try {
             Image img =  Image.createImage("/images/baby.PNG");
@@ -71,6 +72,8 @@ public class ViewChoice extends Form implements ActionListener {
                     }
                     if(t==1){
                         //  show cái mới của anh dữ liêu lấy sau
+                        Controller.getInstance().viewDinhDuong();
+                        
                     }
             }
         });

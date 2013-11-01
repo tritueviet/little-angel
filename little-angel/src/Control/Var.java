@@ -12,22 +12,39 @@ import java.util.Vector;
  * @author FOX
  */
 public class Var {
-
+    public static int viTriChoice=0;
     public static String THANG = "*", CANNANG = "*", CHIEUCAO = "*", SEX = "*";
     public static String Babyname = "*";
     public static String maBe = "0";
-    
     public static int choice = 0;
     public static String stringc2 = "_/_/_", stringc4 = "_:_";
     public static String stringtc = "_:_";
     public static String back = "trở về";
-    public static Vector listBe= new Vector();
+    public static Vector listBe = new Vector();
     public static Date date_mang_thai;
     public static Date date_tiem_chung;
     public static Date date_;
-    
-    
-    
+    public static String[] thongTinBoSung = {
+        "các bước nấu bột cho trẻ",
+        "các nhóm thực phẩm cho trẻ",
+        "mẫu thực đơn tuần",
+        "một số câu hỏi",
+        "nguyên tắc bổ sung",
+        "bắt đầu cho trẻ ăn bổ sung với lượng thức ăn ít và tăng dần khi trẻ lớn hơn, vẫn duy trì bú mẹ",
+        "cho trẻ ăn bổ sung đặc dần và thay đổi loại thức ăn khi trẻ lớn đân, phù hợp với nhu cầu và khả năng tiêu hóa",
+        "cho trẻ ăn đủ bốn nhóm thực phẩm để đảm bảo cungcấp đủ chất cho sự phát triển của trẻ",
+        "cho trẻ ăn theo nhu cầu",
+        "nuôi con bằng sữa mẹ hoàn toàn trong 6 tháng đầu",
+        "tăng cường chăm sóc trẻ khi bị ốm",
+        "tăng cường vi chất dinh dưỡng cho trẻ như vitamin A, sắt, kẽm…",
+        "theo dõi cân nặng của trẻ thường xuyên và tiêm phòng đầy đủ",
+        "thực hành vệ sinh cá nhân và an toàn thực phẩm tốt",
+        "tiếp tục cho trẻ bú mẹ theo nhu cầu cho tới 2 tuổi",
+        "mẫu thực đơn tuần cho trẻ 1 -2 tuổi",
+        "mẫu thực đơn tuần cho trẻ 7 -9 tháng tuổi",
+        "mẫu thực đơn tuần cho trẻ 9 -12 tháng tuổi",
+        "một số thực đơn nấu cơm cho trẻ"
+    };
     public static final double[] FEMALE_W_STANDARD = {3.2, 4.2, 5.8, 7.3, 8.9,
         10.2, 11.5, 13.9, 16.1, 18.2};
     public static final double[] FEMALE_MALNUTRITION = {2.4, 3.2, 4.5, 5.7, 7,
@@ -49,11 +66,11 @@ public class Var {
         75.7, 82.3, 87.8, 96.1, 103.3, 110};
     public static final double[] MALE_SHORT = {46.1, 50.8, 57.3, 63.3, 71.0,
         76.9, 81.7, 88.7, 94.9, 100.7};
-   public  static String[] v1 = {"BCG", "r-HBvax", "DPT", "Vắc xin bại liệt uống",
+    public static String[] v1 = {"BCG", "r-HBvax", "DPT", "Vắc xin bại liệt uống",
         "Quinaxem", "Rouvax ", "Vắc xin sởi ", "Vắc xin uốn ván hấp phụ"};
-    public static int []dd1 = new int[v1.length];  
+    public static int[] dd1 = new int[v1.length];
     public static String[] v2 = {"Infanrix-hexa", "Pentaxim", "Tetraxim", "Tritanrix ", "Euvax ", "Engerix", "Rotarix ", "Vaxigrip", "Act- Hib", "Hiberix", "Avaxim ", "Trimovax (ROR)", "MMR II",
         "Priorix ", "Okavax ", "Varilrix", "Meningo A+C", "Pneumo 23", "Vắc xin uốn ván hấp phụ",
         "Gardasil ", "Cervavix"};
-    public static int []dd2 = new int[v2.length];  
+    public static int[] dd2 = new int[v2.length];
 }
