@@ -23,25 +23,25 @@ import javax.microedition.lcdui.Graphics;
  */
 public class ViewHome extends Form implements ActionListener {
 
-    Command help= new Command("thông tin và giúp đỡ");
+    Command help = new Command("thông tin và giúp đỡ");
     public Container table = new Container(new BoxLayout(BoxLayout.Y_AXIS));
     public Container tablename = new Container(new BoxLayout(BoxLayout.Y_AXIS));
     public Button[] bt = new Button[81];
     public Label[] lb = new Label[81];
     Button img1, sucKhoe, NhacNho;
-    
     Command cmdAdd;
-    
+
     public ViewHome() {
+        super(" little angle");
         try {
-            cmdAdd= new Command("thêm",Image.createImage("/images/add.png"));
+            cmdAdd = new Command("thêm", Image.createImage("/images/add.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
         setDefaultCommand(cmdAdd);
         addCommand(help);
         addCommandListener(this);
-        
+
         this.setLayout(new BoxLayout(BoxLayout.X_AXIS));
         Font createSystemFont = Font.createSystemFont(Font.FACE_SYSTEM, Font.STYLE_PLAIN, Font.SIZE_SMALL);
         for (int i = 0; i < 35; i++) {
@@ -132,8 +132,8 @@ public class ViewHome extends Form implements ActionListener {
         con.addComponent(tablename);
         con.addComponent(table);
         con.getStyle().setMargin(5, 5, 7, 7);
-        
-        
+
+
         addComponent(con);
         setScrollableY(false);
         Container baby = new Container(new BoxLayout(BoxLayout.Y_AXIS));
@@ -196,7 +196,7 @@ public class ViewHome extends Form implements ActionListener {
         b5.addComponent(b5inform);
         baby.addComponent(b5);
         baby.getStyle().setMargin(0, 0, 0, 0);
-        
+
         try {
             sucKhoe = new Button("Sức khỏe", Image.createImage("/images/nenlam3.PNG"));
             NhacNho = new Button("Nhắc nhở", Image.createImage("/images/nenlam4.PNG"));
@@ -216,41 +216,43 @@ public class ViewHome extends Form implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent ae) {
-        if(ae.getSource()==NhacNho){
+        if (ae.getSource() == NhacNho) {
             Controller.getInstance().showRemind();
-        }
-        else if(ae.getSource()==sucKhoe){
+        } else if (ae.getSource() == sucKhoe) {
             Controller.getInstance().showSucKhoe();
-        }else
-        if (ae.getSource() == img1) {
+        } else if (ae.getSource() == img1) {
             Controller.getInstance().showInform();
-        }
-        else  if(ae.getSource()==cmdAdd){
-            Var.listBe.addElement(Var.maBe+"");
+        } else if (ae.getSource() == cmdAdd) {
+            Var.listBe.addElement(Var.maBe + "");
             Var.listBe.addElement(Var.Babyname);
             Var.listBe.addElement(Var.CANNANG);
             Var.listBe.addElement(Var.CHIEUCAO);
             Var.listBe.addElement(Var.THANG);
             Var.listBe.addElement(Var.SEX);
-            
-            Var.maBe=(Integer.parseInt(Var.maBe)+1)+"";
-            Var.Babyname="*";
-            Var.CANNANG="*";
-            Var.CHIEUCAO="*";
-            Var.THANG="*";
-            Var.SEX="*";
-            
+
+            Var.maBe = (Integer.parseInt(Var.maBe) + 1) + "";
+            Var.Babyname = "*";
+            Var.CANNANG = "*";
+            Var.CHIEUCAO = "*";
+            Var.THANG = "*";
+            Var.SEX = "*";
+
             Controller.getInstance().showHome();
-            
-        }
-         else   
-        for (int i = 0; i < 81; i++) {
-            if (ae.getSource() == bt[i] && i != 39) {
-                Controller.getInstance().showChoice(i);
+
+        } else {
+            if (ae.getSource() == help) {
+                Controller.getInstance().showSMS();
+            } else {
+
+                for (int i = 0; i < 81; i++) {
+                    if (ae.getSource() == bt[i] && i != 39) {
+                        Controller.getInstance().showChoice(i);
+                    }
+                }
             }
+
+
+
         }
-       
-        
-        
     }
 }
