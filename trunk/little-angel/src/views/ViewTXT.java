@@ -58,7 +58,7 @@ public class ViewTXT extends Form implements ActionListener {
 
     public void actionPerformed(ActionEvent ae) {
         if (ae.getCommand() == backCommand) {
-            Controller.getInstance().viewDinhDuong();
+            Controller.getInstance().showDinhDuong();
         }
     }
 }

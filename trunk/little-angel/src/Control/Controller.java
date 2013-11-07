@@ -107,7 +107,7 @@ public class Controller {
         }
     }
 
-    public void viewAbout(){
+    public void showAbout(){
         if (categoryBar.getVisibility() == true) {
             categoryBar.setVisibility(false);
         }
@@ -117,7 +117,7 @@ public class Controller {
         about.show();
         
     }
-    public void viewBoSung(int k) {
+    public void showBoSung(int k) {
         if (categoryBar.getVisibility() == true) {
             categoryBar.setVisibility(false);
         }
@@ -284,7 +284,7 @@ public class Controller {
         viewSetting.show();
 
     }
-    public void viewTXT(int selectedIndex) {
+    public void showTXT(int selectedIndex) {
         readData reDa= new readData();
         
         ViewTXT view= new ViewTXT( reDa.readDataDinhDuong(selectedIndex), Var.thongTinBoSung[selectedIndex]);
@@ -310,7 +310,7 @@ public class Controller {
         Display display = Display.getDisplay(main);
         display.setCurrent(view);
     }
-    public void viewDinhDuong() {
+    public void showDinhDuong() {
         ViewDinhDuong view= new ViewDinhDuong();
         view.setTransitionOutAnimator(CommonTransitions.createSlide(
                 CommonTransitions.SLIDE_HORIZONTAL, true, 1000));

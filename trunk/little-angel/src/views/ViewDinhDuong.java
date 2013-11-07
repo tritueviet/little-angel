@@ -28,7 +28,7 @@ public class ViewDinhDuong extends Form {
         list.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent ae) {
-                Controller.getInstance().viewTXT(list.getSelectedIndex());
+                Controller.getInstance().showTXT(list.getSelectedIndex());
             }
         });
         addComponent(list);
