@@ -107,6 +107,16 @@ public class Controller {
         }
     }
 
+    public void viewAbout(){
+        if (categoryBar.getVisibility() == true) {
+            categoryBar.setVisibility(false);
+        }
+        About about= new About();
+        about.setTransitionOutAnimator(CommonTransitions.createSlide(
+                CommonTransitions.SLIDE_HORIZONTAL, true, 1000));
+        about.show();
+        
+    }
     public void viewBoSung(int k) {
         if (categoryBar.getVisibility() == true) {
             categoryBar.setVisibility(false);

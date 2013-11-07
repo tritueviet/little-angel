@@ -23,6 +23,7 @@ import javax.microedition.lcdui.Graphics;
  */
 public class ViewHome extends Form implements ActionListener {
 
+    Command help= new Command("thông tin và giúp đỡ");
     public Container table = new Container(new BoxLayout(BoxLayout.Y_AXIS));
     public Container tablename = new Container(new BoxLayout(BoxLayout.Y_AXIS));
     public Button[] bt = new Button[81];
@@ -38,6 +39,7 @@ public class ViewHome extends Form implements ActionListener {
             ex.printStackTrace();
         }
         setDefaultCommand(cmdAdd);
+        addCommand(help);
         addCommandListener(this);
         
         this.setLayout(new BoxLayout(BoxLayout.X_AXIS));
