@@ -241,7 +241,7 @@ public class ViewHome extends Form implements ActionListener {
 
         } else {
             if (ae.getSource() == help) {
-                Controller.getInstance().showSMS();
+                Controller.getInstance().showAbout();
             } else {
 
                 for (int i = 0; i < 81; i++) {

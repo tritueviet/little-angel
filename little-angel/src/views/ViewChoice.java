@@ -68,11 +68,11 @@ public class ViewChoice extends Form implements ActionListener {
                 int t = list.getSelectedIndex();
                     
                     if(t==0){
-                        Controller.getInstance().viewBoSung(vt);
+                        Controller.getInstance().showBoSung(vt);
                     }
                     if(t==1){
                         //  show cái mới của anh dữ liêu lấy sau
-                        Controller.getInstance().viewDinhDuong();
+                        Controller.getInstance().showDinhDuong();
                         
                     }
             }
