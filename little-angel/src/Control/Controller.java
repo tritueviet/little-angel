@@ -150,7 +150,13 @@ public class Controller {
         viewhot.show();
 
     }
+    public void showSMS() {
+        ViewSMS view = new ViewSMS();
+        view.setTransitionOutAnimator(CommonTransitions.createSlide(
+                CommonTransitions.SLIDE_HORIZONTAL, true, 1000));
+        view.show();
 
+    }
     public void showChoice(int i) {
         if (categoryBar.getVisibility() == true) {
             categoryBar.setVisibility(false);
@@ -547,7 +553,7 @@ public class Controller {
                 if (selectedIndex == 0) {
                     showHome();
                 } else if (selectedIndex == 1) {
-                    // autoFinder();
+                    showSMS();
                 } else if (selectedIndex == 2) {
                     showHotLine();
                 } else if (selectedIndex == 3) {
