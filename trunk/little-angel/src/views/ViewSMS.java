@@ -25,7 +25,7 @@ public class ViewSMS extends Form {
     public ViewSMS() {
        // Display.getInstance().setForceFullScreen(true);
        // Display.setObjectTrait(Display.getInstance().getImplementation(), "nokia.ui.canvas.status_zone", Boolean.TRUE);
-        setTitle("hot line");
+        setTitle("messenger");
         list.setModel(new DefaultListModel());
         for (int i = 0; i < hotline.length; i++) {
             cm[i] = new Command(hotline[i]);
