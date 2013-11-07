@@ -28,8 +28,8 @@ public class About extends Form implements ActionListener {
                 + "\n\nThông tin:"
                 + "\n\nFacebook: https://www.facebook.com/tran.minhlan"
                 + "\nEmail: tranminhlan07t1@gmail.com "
-                + "\n\nNhà phát triển: Tran Minh Lan "
-                + "\nTên ứng dụng: Little Angle "
+                + "\n\nNhà phát triển: TranMinhLan "
+                + "\nTên ứng dụng: LittleAngle "
                 + "\nPhiên bản: 1.0.1"
                 + "\nCopyright  ©2013 Minh Lan. All rights reversed", 2, 10);
 
@@ -37,6 +37,8 @@ public class About extends Form implements ActionListener {
         textArea.setGrowByContent(true);
         textArea.setUIID("Form");
         textArea.getStyle().setFont(font);
+        textArea.getStyle().setMargin(8, 8, 8, 8);
+        
         addComponent(textArea);
         setBackCommand(backCommand);
         addCommand(backCommand);
